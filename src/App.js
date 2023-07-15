@@ -371,10 +371,16 @@ function App() {
         const localSelectedBoard = localStorage.getItem("selectedBoard");
         const localTheme = localStorage.getItem("theme");
 
+        console.log(localState);
+        console.log(localSelectedBoard);
+        console.log(localTheme);
+
         localState ? setState(localState) : setState(initialState.data);
         localSelectedBoard
             ? setSelectedBoard(localSelectedBoard)
-            : setSelectedBoard(localState[0].id);
+            : localState
+            ? setSelectedBoard(localState[0].id)
+            : setSelectedBoard(initialState.data[0].id);
         localTheme ? setTheme(localTheme) : setTheme("light");
     }, []);
 
