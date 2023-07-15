@@ -1,0 +1,30 @@
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 280px;
+    flex: 0 0 auto;
+    overflow-wrap: break-word;
+    /* border: 1px solid red; */
+}
+
+.column--name {
+    display: flex;
+    gap: 12px;
+}
+
+.column--name > p {
+    color: var(--medium-grey);
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.column--tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

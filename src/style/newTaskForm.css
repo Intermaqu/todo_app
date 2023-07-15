@@ -1,0 +1,81 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay::-webkit-scrollbar {
+    display: none;
+}
+
+.new-task-form {
+    padding: 32px;
+    width: 480px;
+    max-width: calc(100vw - 32px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 6px;
+    max-height: 90vh;
+}
+
+.new-task-form-scrollable {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+}
+
+.new-task-form-scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+.new-task-form-light {
+    background: var(--white);
+}
+
+.new-task-form-dark {
+    background: var(--dark-grey);
+}
+
+.new-task-form-label-light {
+    color: var(--medium-grey) !important;
+}
+
+.new-task-form-label-dark {
+    color: var(--white) !important;
+}
+
+.new-task-form-heading-light {
+    color: var(--black) !important;
+}
+
+.new-task-form-heading-dark {
+    color: var(--white) !important;
+}
+
+.new-task-form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.new-task-form--subtasks-subtask {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    align-items: center;
+}
+
+.new-task-form--subtasks-subtask > img {
+    cursor: pointer;
+}

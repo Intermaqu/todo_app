@@ -1,0 +1,90 @@
+.mobile-select-board {
+    display: flex;
+    flex-direction: column;
+    width: 264px;
+    margin-bottom: auto;
+    user-select: none;
+    border-radius: 8px;
+    padding: 16px 16px 16px 0px;
+    justify-content: center;
+    position: absolute;
+    top: 80px;
+    box-shadow: 0px 10px 20px 0px rgba(54, 78, 126, 0.25);
+}
+
+.mobile-select-board-title {
+    color: var(--medium-grey) !important;
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    padding-left: 32px;
+    align-items: center;
+    height: 48px;
+}
+
+.mobile-select-board-light {
+    background: var(--white);
+}
+
+.mobile-select-board-dark {
+    background: var(--dark-grey);
+}
+
+.mobile-select-board-board {
+    padding-left: 32px;
+    display: flex;
+    gap: 16px;
+    border-radius: 0 24px 24px 0;
+    height: 48px;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 24px;
+}
+
+.mobile-select-board-board > p {
+    color: var(--medium-grey);
+}
+
+.mobile-select-board-board-light:hover {
+    background: var(--light-grey-light-bg);
+}
+
+.mobile-select-board-board-dark:hover {
+    background: var(--white);
+}
+
+.mobile-select-board-board-light:hover > p,
+.mobile-select-board-board-dark:hover > p {
+    color: var(--main-purple);
+}
+
+.mobile-select-board-board-light:hover > img,
+.mobile-select-board-board-dark:hover > img {
+    filter: invert(42%) sepia(90%) saturate(625%) hue-rotate(208deg)
+        brightness(79%) contrast(96%);
+}
+
+.mobile-select-board-board-selected {
+    background: var(--main-purple);
+    color: var(--white) !important;
+}
+
+.mobile-select-board-board-selected > img {
+    filter: brightness(0) saturate(100%) invert(99%) sepia(14%) saturate(2%)
+        hue-rotate(8deg) brightness(108%) contrast(101%);
+}
+
+.mobile-select-board-board-add > p {
+    color: var(--main-purple);
+}
+
+.mobile-select-board-board-add > img {
+    filter: invert(42%) sepia(90%) saturate(625%) hue-rotate(208deg)
+        brightness(79%) contrast(96%);
+}
+
+.sidebar-toggle-theme-mobile {
+    width: 235px !important;
+    margin-left: 15px;
+}

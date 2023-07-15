@@ -1,0 +1,102 @@
+:root {
+    --main-purple: #635fc7;
+    --main-purple-025: rgba(99, 95, 199, 0.25);
+    --main-purple-010: rgba(99, 95, 199, 0.1);
+    --main-purple-hover: #a8a4ff;
+    --black: #000112;
+    --very-dark-grey-dark-bg: #20212c;
+    --dark-grey: #2b2c37;
+    --lines-dark: #3e3f4e;
+    --medium-grey: #828fa3;
+    --medium-grey-025: rgba(130, 143, 163, 0.25);
+    --lines-light: #e4ebfa;
+    --light-grey-light-bg: #f4f7fd;
+    --white: #fff;
+    --red: #ea5555;
+    --red-hover: #ff9898;
+
+    --font-family: "Plus Jakarta Sans", sans-serif;
+
+    --font-size-xl: 24px;
+    --font-size-l: 18px;
+    --font-size-m: 15px;
+    --font-size-s: 12px;
+
+    --font-weight-bold: 700;
+    --font-weight-medium: 500;
+
+    --font-line-height-xl: 30px;
+    --font-line-height-l: 23px;
+    --font-line-height-m: 19px;
+    --font-line-height-s: 15px;
+
+    --kerning: 2, 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+.headingXL {
+    font-size: var(--font-size-xl);
+    line-height: var(--font-line-height-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+}
+
+.headingL {
+    font-size: var(--font-size-l);
+    line-height: var(--font-line-height-l);
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+}
+
+.headingM {
+    font-size: var(--font-size-m);
+    line-height: var(--font-line-height-m);
+    font-weight: var(--font-weight-bold);
+    color: var(--black);
+}
+
+.headingS {
+    font-size: var(--font-size-s);
+    line-height: var(--font-line-height-s);
+    font-weight: var(--font-weight-bold);
+    color: var(--medium-grey);
+}
+
+.bodyL {
+    font-size: 13px;
+    line-height: var(--font-line-height-l);
+    font-weight: var(--font-weight-medium);
+    color: var(--dark-grey);
+}
+
+.bodyM {
+    font-size: 12px;
+    line-height: var(--font-line-height-s);
+    font-weight: var(--font-weight-bold);
+    color: var(--dark-grey);
+}
+
+.hamburger {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    width: 37px;
+    margin-left: 12px;
+    justify-content: space-between;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+}
+
+.hamburger > .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--medium-grey);
+}

@@ -1,0 +1,35 @@
+.delete-task {
+    width: 480px;
+    max-width: calc(100vw - 32px);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 6px;
+}
+
+.delete-task-light {
+    background: var(--white);
+}
+
+.delete-task-dark {
+    background: var(--dark-grey);
+}
+
+.delete-task > .bodyL {
+    color: var(--medium-grey) !important;
+}
+.delete-task > .font-red {
+    color: var(--red) !important;
+}
+
+.delete-task-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-task-buttons-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

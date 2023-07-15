@@ -1,0 +1,337 @@
+{
+    "data": [
+        {
+            "id": "d972b3381cbe",
+            "boardName": "My Board 1",
+            "columns": []
+        },
+        {
+            "id": "a51f517da419",
+            "boardName": "My Board 2",
+            "columns": [
+                {
+                    "id": "920c9111b4ae",
+                    "columnName": "Column 1",
+                    "dotColor": "#FF0000",
+                    "tasks": [
+                        {
+                            "taskName": "Task 1 for column 1",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "0594a42989fe"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "2db68a276ab5"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "e265965c1fa9"
+                                }
+                            ],
+                            "id": "cd489d26c159"
+                        },
+                        {
+                            "taskName": "Task 2 for column 1",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "eb6c837b4090"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "c381c527f53d"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "197403522353"
+                                }
+                            ],
+                            "id": "08179601490b"
+                        },
+                        {
+                            "taskName": "Task 3 for column 1",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "110e48303edb"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "1c63b2224151"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "7cd1087442d8"
+                                }
+                            ],
+                            "id": "0df1dfc11a35"
+                        },
+                        {
+                            "taskName": "Task 4 for column 1",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "36126444f9c8"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "6d8fc6ecdd3b"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "2629dceeae7e"
+                                }
+                            ],
+                            "id": "69ad1af88315"
+                        }
+                    ]
+                },
+                {
+                    "id": "72f4f42850e8",
+                    "columnName": "Column 2",
+                    "dotColor": "#00FF00",
+                    "tasks": [
+                        {
+                            "taskName": "Task 1 for column 2",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "c058ce0ee2d9"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "c2249c123d9a"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "8336eb34e37b"
+                                }
+                            ],
+                            "id": "857cc32a0643"
+                        },
+                        {
+                            "taskName": "Task 2 for column 2",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "d8c30d845d5c"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "46e46dc194ca"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "4bd9566a679f"
+                                }
+                            ],
+                            "id": "642a38e7e753"
+                        },
+                        {
+                            "taskName": "Task 3 for column 2",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "e93c416358f1"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "7217cc7bf045"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "8e64ca2952fb"
+                                }
+                            ],
+                            "id": "dc8805744bd0"
+                        }
+                    ]
+                },
+                {
+                    "id": "17aaf001a576",
+                    "columnName": "Column 3",
+                    "dotColor": "#FF0000",
+                    "tasks": [
+                        {
+                            "taskName": "Task 1 for column 3",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "442f44977dee"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "6968238be05c"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "40a91a2e4f41"
+                                }
+                            ],
+                            "id": "54044f7b4759"
+                        },
+                        {
+                            "taskName": "Task 2 for column 3",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "7f6eaa65179b"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "fcb7d2dd5977"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "fbc8661adfb5"
+                                }
+                            ],
+                            "id": "ba27ce5ecc0e"
+                        },
+                        {
+                            "taskName": "Task 3 for column 3",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "10fb93a44f20"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "2275c6540c8b"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "6f22dfa4ecf3"
+                                }
+                            ],
+                            "id": "1a73a02ae99c"
+                        },
+                        {
+                            "taskName": "Task 4 for column 3",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "60e04f6d5048"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "e4eaf334267a"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "213a24510a51"
+                                }
+                            ],
+                            "id": "545679591385"
+                        }
+                    ]
+                },
+                {
+                    "id": "3435d35e0d69",
+                    "columnName": "Column 4",
+                    "dotColor": "#00FF00",
+                    "tasks": [
+                        {
+                            "taskName": "Task 1 for column 4",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "da9d817b06c7"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "8870d759f363"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "4414c1cb8fc1"
+                                }
+                            ],
+                            "id": "9eb0fdd3fa2c"
+                        },
+                        {
+                            "taskName": "Task 2 for column 4",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "d92acbd5ea89"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "4cde649fff19"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "bb7504ab2b34"
+                                }
+                            ],
+                            "id": "273a1716c727"
+                        },
+                        {
+                            "taskName": "Task 3 for column 4",
+                            "subtasks": [
+                                {
+                                    "subtaskName": "subtask 1",
+                                    "status": true,
+                                    "id": "f244bebc2735"
+                                },
+                                {
+                                    "subtaskName": "subtask 2",
+                                    "status": false,
+                                    "id": "0edabbc343ab"
+                                },
+                                {
+                                    "subtaskName": "subtask 3",
+                                    "status": false,
+                                    "id": "08ce3342bf09"
+                                }
+                            ],
+                            "id": "2838353c44ab"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

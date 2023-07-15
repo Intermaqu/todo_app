@@ -1,0 +1,47 @@
+.mobile-header {
+    width: 100vw;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+    position: relative;
+    z-index: 101;
+}
+
+.mobile-header-light {
+    background: var(--white);
+}
+
+.mobile-header-dark {
+    background: var(--dark-grey);
+}
+
+.mobile-logo {
+    width: 24px;
+}
+
+.mobile-header-title {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+}
+
+.mobile-header-title-light {
+    color: var(--black) !important;
+}
+
+.mobile-header-title-dark {
+    color: var(--white) !important;
+}
+
+.arrow {
+    width: 10px;
+}
+
+.mobile-header-buttons {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,84 @@
+.button-primary-l,
+.button-primary-l-dark {
+    background-color: var(--main-purple);
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+    font-size: var(--font-size-m);
+    font-style: normal;
+    font-weight: var(--font-weight-bold);
+    height: 48px;
+    line-height: 48px;
+}
+
+.button-primary-l:hover,
+.button-primary-l-dark:hover,
+.button-primary-s:hover,
+.button-primary-s-dark:hover {
+    background-color: var(--main-purple-hover);
+}
+
+.button-primary-s,
+.button-primary-s-dark,
+.button-secondary,
+.button-secondary-dark,
+.button-destructive,
+.button-destructive-dark {
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: var(--font-weight-bold);
+    line-height: 40px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+}
+
+.button-primary-s,
+.button-primary-s-dark {
+    background-color: var(--main-purple);
+    color: var(--white);
+}
+
+.button-primary-s:hover,
+.button-primary-s-dark:hover {
+    background-color: var(--main-purple-hover);
+    color: var(--white);
+}
+
+.button-secondary {
+    background-color: var(--main-purple-010);
+    color: var(--main-purple);
+}
+
+.button-secondary:hover {
+    background-color: var(--main-purple-025);
+}
+
+.button-secondary-dark,
+.button-secondary-dark:hover {
+    background-color: var(--white);
+    color: var(--main-purple);
+}
+
+.button-destructive,
+.button-destructive-dark {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.button-destructive:hover,
+.button-destructive-dark:hover {
+    background-color: var(--red-hover);
+}
+
+.button-theme-toggler-light,
+.button-theme-toggler-dark {
+    background: inherit;
+}
+
+.button-theme-toggler-light:hover {
+    color: var(--main-purple);
+    background: var(--main-purple-hover);
+}

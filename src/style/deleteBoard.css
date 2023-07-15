@@ -1,0 +1,36 @@
+.delete-board {
+    width: 480px;
+    max-width: calc(100vw - 32px);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 6px;
+}
+
+.delete-board-light {
+    background: var(--white);
+}
+
+.delete-board-dark {
+    background: var(--dark-grey);
+}
+
+.delete-board > .bodyL {
+    color: var(--medium-grey) !important;
+}
+.delete-board > .font-red {
+    color: var(--red) !important;
+}
+
+.delete-board-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.delete-board-buttons-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

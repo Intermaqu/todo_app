@@ -1,0 +1,102 @@
+.header {
+    display: flex;
+    align-items: center;
+    height: 96px;
+    width: calc(100vw - 300px);
+    padding: 0 12px 0 32px;
+}
+
+.header-sidebar-closed {
+    width: 100vw;
+}
+
+.header-light {
+    background: var(--white);
+    border-bottom: 1px solid var(--lines-light);
+}
+
+.header-dark {
+    background: var(--dark-grey);
+    border-bottom: 1px solid var(--lines-dark);
+}
+
+.header__logo {
+    width: 210px;
+    /* border-right: 1px solid var(--lines-light); */
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header__logo > img {
+    height: 25px;
+    margin-top: 1px;
+}
+
+.header__title-border {
+    border-left: 1px solid;
+}
+
+.header__title-light {
+    color: var(--black) !important;
+    border-color: var(--lines-light);
+}
+
+.header__title-dark {
+    color: var(--white) !important;
+    border-color: var(--lines-dark);
+}
+
+.header__title-light,
+.header__title-dark {
+    margin-right: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header__title-collapsed-light,
+.header__title-collapsed-dark {
+    padding-left: 32px;
+}
+
+.hamburger-menu {
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    width: 192px;
+    padding: 16px;
+    border-radius: 8px;
+    z-index: 100;
+}
+
+.hamburger-menu-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.hamburger-menu-light {
+    background: var(--white);
+}
+
+.hamburger-menu-dark {
+    background: var(--very-dark-grey-dark-bg);
+}
+
+.hamburger-menu > span {
+    display: block;
+    width: 100%;
+}
+
+.hamburger-menu-edit {
+    color: var(--medium-grey) !important;
+    margin-bottom: 16px;
+}
+
+.hamburger-menu-delete {
+    color: var(--red) !important;
+}
