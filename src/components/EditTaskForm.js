@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ThemeContext from "../ThemeContext";
 import CustomButton from "./CustomButton";
 import CustomInput from "./CustomInput";
 import iconCross from "../assets/images/icon-cross.svg";
 import CustomDropdown from "./CustomDropdown";
+import { getId } from "../utils/generateId.js";
 
 const EditTaskForm = ({
     task,
@@ -12,7 +13,6 @@ const EditTaskForm = ({
     columnName,
     columnId,
     handleEditTask,
-    isMobile,
 }) => {
     const [title, setTitle] = useState(task.taskName);
     const [description, setDescription] = useState(task.taskDescription || "");
@@ -50,9 +50,7 @@ const EditTaskForm = ({
     return (
         <div className="overlay" onMouseDown={() => setIsEditTaskShown(false)}>
             <div
-                className={`new-task-form new-task-form-${theme} ${
-                    isMobile && "new-task-form--mobile"
-                }`}
+                className={`new-task-form new-task-form-${theme}`}
                 onMouseDown={(e) => {
                     e.stopPropagation();
                 }}

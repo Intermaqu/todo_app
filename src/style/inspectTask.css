@@ -6,23 +6,6 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    max-height: 90vh;
-}
-
-.inspect-task-scrollable {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    overflow-y: auto;
-}
-
-.inspect-task-scrollable::-webkit-scrollbar {
-    display: none;
-}
-
-.inspect-task--mobile {
-    margin-top: 72px;
-    max-height: 85vh !important;
 }
 
 .inspect-task-light {

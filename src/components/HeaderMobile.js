@@ -22,6 +22,7 @@ const Header = ({
 
     const handleMenuClick = () => {
         setIsMenuShown(false);
+        console.log("menu clicked");
     };
 
     return (
@@ -45,7 +46,7 @@ const Header = ({
             >
                 {boardName}
                 <img
-                    src={isMobileSelectBoardShown ? arrowUp : arrowDown}
+                    src={isMenuShown ? arrowUp : arrowDown}
                     alt="arrow"
                     className="arrow"
                 />

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import ThemeContext from "../ThemeContext";
 import "../style/inputs.css";
 

@@ -6,12 +6,7 @@ import { getId } from "../utils/generateId.js";
 import "../style/editBoard.css";
 import iconCross from "../assets/images/icon-cross.svg";
 
-const EditBoardForm = ({
-    board,
-    handleEditBoard,
-    setIsEditBoardShown,
-    isMobile,
-}) => {
+const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
     const [title, setTitle] = useState(board.boardName);
     const [columns, setColumns] = useState(board.columns);
 
@@ -52,9 +47,7 @@ const EditBoardForm = ({
     return (
         <div className="overlay" onMouseDown={() => setIsEditBoardShown(false)}>
             <div
-                className={`edit-board edit-board-${theme} ${
-                    isMobile && "edit-board--mobile"
-                }`}
+                className={`edit-board edit-board-${theme}`}
                 onMouseDown={(e) => e.stopPropagation()}
             >
                 <div className="edit-board-scrollable">

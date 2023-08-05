@@ -6,7 +6,6 @@
     flex-direction: column;
     gap: 24px;
     border-radius: 6px;
-    max-height: 90vh;
 }
 
 .new-column-light {

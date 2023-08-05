@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ThemeContext from "../ThemeContext";
 import CustomCheckbox from "./CustomCheckbox";
 import CustomDropdown from "./CustomDropdown";
@@ -12,7 +12,6 @@ const InspectTask = ({
     handleEditTask,
     setIsDeleteTaskShown,
     setIsEditTaskShown,
-    isMobile,
 }) => {
     const theme = useContext(ThemeContext);
     const [currentSubtasks, setCurrentSubtasks] = useState(subtasks);
@@ -84,9 +83,7 @@ const InspectTask = ({
             }}
         >
             <div
-                className={`inspect-task inspect-task-${theme} ${
-                    isMobile && "inspect-task--mobile"
-                }`}
+                className={`inspect-task inspect-task-${theme}`}
                 onMouseDown={(e) => {
                     e.stopPropagation();
                     setIsTaskMenuShown(false);
@@ -134,39 +131,37 @@ const InspectTask = ({
                         )}
                     </div>
                 </div>
-                <div className="inspect-task-scrollable">
-                    <p className={`bodyL inspect-task-description-${theme}`}>
-                        {description}
+                <p className={`bodyL inspect-task-description-${theme}`}>
+                    {description}
+                </p>
+                <div className="inspect-task-section">
+                    <p
+                        className={`bodyM inspect-task-form-label-${theme}`}
+                    >{`Subtasks (${
+                        currentSubtasks.filter((subtask) => subtask.status)
+                            .length
+                    } of ${currentSubtasks.length})`}</p>
+                    {currentSubtasks.map(({ id, subtaskName, status }) => {
+                        return (
+                            <CustomCheckbox
+                                key={id}
+                                text={subtaskName}
+                                checked={status}
+                                onClickCheck={handleChangeTask}
+                                additionalParam={id}
+                            />
+                        );
+                    })}
+                </div>
+                <div className="inspect-task-section">
+                    <p className={`bodyM inspect-task-form-label-${theme}`}>
+                        Current Status
                     </p>
-                    <div className="inspect-task-section">
-                        <p
-                            className={`bodyM inspect-task-form-label-${theme}`}
-                        >{`Subtasks (${
-                            currentSubtasks.filter((subtask) => subtask.status)
-                                .length
-                        } of ${currentSubtasks.length})`}</p>
-                        {currentSubtasks.map(({ id, subtaskName, status }) => {
-                            return (
-                                <CustomCheckbox
-                                    key={id}
-                                    text={subtaskName}
-                                    checked={status}
-                                    onClickCheck={handleChangeTask}
-                                    additionalParam={id}
-                                />
-                            );
-                        })}
-                    </div>
-                    <div className="inspect-task-section">
-                        <p className={`bodyM inspect-task-form-label-${theme}`}>
-                            Current Status
-                        </p>
-                        <CustomDropdown
-                            options={columns}
-                            value={currentStatus}
-                            setValue={handleChangeTask}
-                        />
-                    </div>
+                    <CustomDropdown
+                        options={columns}
+                        value={currentStatus}
+                        setValue={handleChangeTask}
+                    />
                 </div>
             </div>
         </div>
