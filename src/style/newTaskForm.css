@@ -26,6 +26,23 @@
     max-height: 90vh;
 }
 
+.new-task-form--mobile {
+    margin-top: 72px;
+    max-height: 85vh !important;
+}
+
+.add-new-task-scrollable {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+}
+
+.new-task-form--mobile {
+    margin-top: 72px;
+    max-height: 85vh !important;
+}
+
 .new-task-form-scrollable {
     display: flex;
     flex-direction: column;

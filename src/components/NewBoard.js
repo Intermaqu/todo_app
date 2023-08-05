@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "../style/newBoard.css";
 import ThemeContext from "../ThemeContext";
 import CustomInput from "./CustomInput";
 import CustomButton from "./CustomButton";
 import iconCross from "../assets/images/icon-cross.svg";
 
-const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
+const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown, isMobile }) => {
     const [title, setTitle] = useState("");
     const [columns, setColumns] = useState(["Todo", "Doing"]);
 
@@ -23,7 +23,9 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
             onMouseDown={() => setIsAddNewBoardShown(false)}
         >
             <div
-                className={`add-new-board add-new-board-${theme}`}
+                className={`add-new-board add-new-board-${theme} ${
+                    isMobile && "add-new-board--mobile"
+                }`}
                 onMouseDown={(e) => e.stopPropagation()}
             >
                 <p className={`headingL add-new-board--header-${theme}`}>

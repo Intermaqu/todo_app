@@ -9,6 +9,11 @@
     max-height: 90vh;
 }
 
+.add-new-board--mobile {
+    margin-top: 72px;
+    max-height: 85vh !important;
+}
+
 .add-new-board-scrollable {
     display: flex;
     flex-direction: column;

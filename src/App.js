@@ -2,12 +2,6 @@ import "./App.css";
 import ThemeContext from "./ThemeContext";
 import InspectTaskContext from "./InspectTaskContext";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import CustomButton from "./components/CustomButton";
-import CustomCheckbox from "./components/CustomCheckbox";
-import CustomInput from "./components/CustomInput";
-import CustomDropdown from "./components/CustomDropdown";
-import Task from "./components/Task";
-import Column from "./components/Column";
 import Board from "./components/Board";
 import initialState from "./data.json";
 import Sidebar from "./components/Sidebar";
@@ -32,6 +26,8 @@ function App() {
     const [theme, setTheme] = useState(null);
     const [state, setState] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
+
+    // eslint-disable-next-line no-unused-vars
     const [windowWidth, setWindowWidth] = useState(null);
 
     const [isAddNewTaskShown, setIsAddNewTaskShown] = useState(false);
@@ -130,16 +126,14 @@ function App() {
     ) => {
         const currentBoard = state.find((board) => board.id === selectedBoard);
 
-        console.log(status);
-
-        console.log(
-            "Status.columnId",
-            status.columnId,
-            "previousColumnId",
-            previousColumnId,
-            "\nstatus:",
-            status,
-        );
+        // console.log(
+        //     "Status.columnId",
+        //     status.columnId,
+        //     "previousColumnId",
+        //     previousColumnId,
+        //     "\nstatus:",
+        //     status,
+        // );
 
         if (status.columnId === previousColumnId) {
             const newColumns = currentBoard.columns.map((column) => {
@@ -223,8 +217,8 @@ function App() {
     };
 
     const handleAddBoard = (boardName, columns) => {
-        console.log(boardName);
-        console.log(columns);
+        // console.log(boardName);
+        // console.log(columns);
         const newColumns = columns.map((column, index) => ({
             id: getId(),
             columnName: column,
@@ -309,7 +303,7 @@ function App() {
     const handleDeleteBoard = (id) => {
         const newState = state.filter((board) => board.id !== id);
         setState(newState);
-        console.log("New State: ", newState);
+        // console.log("New State: ", newState);
         handleSelectBoard(newState[0].id);
         setIsDeleteBoardShown(false);
     };
@@ -335,7 +329,7 @@ function App() {
 
     useLayoutEffect(() => {
         const currentWidth = window.innerWidth;
-        console.log(currentWidth);
+        // console.log(currentWidth);
         setWindowWidth(currentWidth);
         if (currentWidth <= 480) {
             setIsMobile(true);
@@ -354,7 +348,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        console.log("New State: ", state);
+        // console.log("New State: ", state);
         state && localStorage.setItem("state", JSON.stringify(state));
     }, [state]);
 
@@ -371,9 +365,9 @@ function App() {
         const localSelectedBoard = localStorage.getItem("selectedBoard");
         const localTheme = localStorage.getItem("theme");
 
-        console.log(localState);
-        console.log(localSelectedBoard);
-        console.log(localTheme);
+        // console.log(localState);
+        // console.log(localSelectedBoard);
+        // console.log(localTheme);
 
         localState ? setState(localState) : setState(initialState.data);
         localSelectedBoard
@@ -499,15 +493,8 @@ function App() {
                             }
                             setIsAddNewTaskShown={setIsAddNewTaskShown}
                             handleAddTask={handleAddTask}
+                            isMobile={isMobile}
                         />
-                        // <EditTaskForm
-                        //     columns={state[selectedBoard].columns}
-                        //     setIsEditTaskShown={setIsAddNewTaskShown}
-                        //     columnName="Todo"
-                        //     columnId={1}
-                        //     task={state[selectedBoard].columns[0].tasks[0]}
-                        //     handleEditTask={handleEditTask}
-                        // />
                     )}
 
                     {isEditTaskShown && (
@@ -528,6 +515,7 @@ function App() {
                             columnId={inspectedTask.columnId}
                             task={inspectedTask.task}
                             handleEditTask={handleEditTask}
+                            isMobile={isMobile}
                         />
                     )}
 
@@ -535,6 +523,7 @@ function App() {
                         <NewBoard
                             setIsAddNewBoardShown={setIsAddNewBoardShown}
                             handleAddBoard={handleAddBoard}
+                            isMobile={isMobile}
                         />
                     )}
                     {isInspectTaskShown && inspectedTask !== null && (
@@ -558,12 +547,14 @@ function App() {
                             handleEditTask={handleEditTask}
                             setIsDeleteTaskShown={setIsDeleteTaskShown}
                             setIsEditTaskShown={setIsEditTaskShown}
+                            isMobile={isMobile}
                         />
                     )}
                     {isAddNewColumnShown && (
                         <NewColumn
                             setIsAddNewColumnShown={setIsAddNewColumnShown}
                             handleAddColumn={handleAddColumn}
+                            isMobile={isMobile}
                         />
                     )}
 
@@ -572,6 +563,7 @@ function App() {
                             setIsEditBoardShown={setIsEditBoardShown}
                             handleEditBoard={handleEditBoard}
                             board={state.find(({ id }) => id === selectedBoard)}
+                            isMobile={isMobile}
                         />
                     )}
                     {isDeleteBoardShown && (

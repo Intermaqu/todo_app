@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import logoLight from "../assets/images/logo-light.svg";
 import logoDark from "../assets/images/logo-dark.svg";
 import boardIcon from "../assets/images/icon-board.svg";
