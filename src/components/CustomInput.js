@@ -9,12 +9,12 @@ const CustomInput = ({
   width = "100%",
   type = "text",
   customStyles = {},
-  isValid = false,
+  isValid,
 }) => {
   const theme = useContext(ThemeContext);
   const inputRef = useRef(null);
 
-  const [error, setError] = useState(isValid);
+  // const [error, setError] = useState(isValid);
 
   const handleClickParent = () => {
     inputRef.current && inputRef.current.focus();
@@ -22,16 +22,24 @@ const CustomInput = ({
 
   const handleChange = (e) => {
     onChangeValue(e.target.value);
-    if (e.target.value.length > 0) {
-      setError(false);
-    } else {
-      setError(true);
-    }
+    // if (e.target.value.length > 0) {
+    //   setError(false);
+    // } else {
+    //   setError(true);
+    // }
   };
 
+  // const className = `custom-input-wrapper custom-input-wrapper-${theme} ${
+  //   error && "custom-input-wrapper-invalid"
+  // }`;
   const className = `custom-input-wrapper custom-input-wrapper-${theme} ${
-    error && "custom-input-wrapper-invalid"
+    isValid && "custom-input-wrapper-invalid"
   }`;
+
+  useEffect(() => {
+    // setError(isValid);
+    console.log("isvalid", isValid);
+  }, [isValid]);
 
   return (
     <div
@@ -59,7 +67,7 @@ const CustomInput = ({
           ref={inputRef}
         />
       )}
-      {error && <p className="custom-input-invalid-text">Can't be empty</p>}
+      {isValid && <p className="custom-input-invalid-text">Can't be empty</p>}
     </div>
   );
 };
