@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ThemeContext from "../ThemeContext";
 import CustomInput from "./CustomInput";
 import CustomButton from "./CustomButton";
@@ -7,6 +7,36 @@ import "../style/newColumn.css";
 const NewColumn = ({ handleAddColumn, setIsAddNewColumnShown }) => {
   const theme = useContext(ThemeContext);
   const [columnName, setColumnName] = useState("");
+  const [columnNameValid, setColumnNameValid] = useState(true);
+
+  const handleAddColumnValidated = () => {
+    if (columnName === "") {
+      setColumnNameValid(false);
+      return;
+    }
+    handleAddColumn(columnName);
+  };
+
+  const handleChangeColumnName = (value) => {
+    setColumnNameValid(value !== "");
+    setColumnName(value);
+  };
+
+  const handleKeyboardClick = (e) => {
+    if (e.key === "Enter") {
+      handleAddColumnValidated();
+    }
+    if (e.key === "Escape") {
+      setIsAddNewColumnShown(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyboardClick);
+    return () => {
+      document.removeEventListener("keydown", handleKeyboardClick);
+    };
+  }, []);
 
   return (
     <div className="overlay" onMouseDown={() => setIsAddNewColumnShown(false)}>
@@ -20,14 +50,15 @@ const NewColumn = ({ handleAddColumn, setIsAddNewColumnShown }) => {
           <CustomInput
             type="text"
             value={columnName}
-            onChangeValue={setColumnName}
+            onChangeValue={handleChangeColumnName}
             placeholder="e.g. In Progress"
+            isValid={!columnNameValid}
           />
         </span>
         <CustomButton
           text="Add New Column"
           type="PrimaryS"
-          onClick={() => handleAddColumn(columnName)}
+          onClick={() => handleAddColumnValidated(columnName)}
         />
       </div>
     </div>
