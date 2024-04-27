@@ -72,11 +72,16 @@ const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
                   }
                   placeholder="Column Name"
                 />
-                <img
-                  src={iconCross}
-                  alt="icon cross"
+                <button
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
                   onClick={() => handleRemoveColumn(column.id)}
-                />
+                >
+                  <img src={iconCross} alt="icon cross" />
+                </button>
               </div>
             ))}
             <CustomButton
