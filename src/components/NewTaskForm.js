@@ -11,22 +11,56 @@ const NewTaskForm = ({ columns, handleAddTask, setIsAddNewTaskShown }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState({});
-  const [subtasks, setSubtasks] = useState([
-    {
-      id: getId(),
-      subtaskName: "",
-      placeholder: "e.g. Make coffee",
-      status: false,
-    },
-    {
-      id: getId(),
-      subtaskName: "",
-      placeholder: "e.g. Drink coffee & smile",
-      status: false,
-    },
-  ]);
+  const [subtasks, setSubtasks] = useState();
+  const [formValid, setFormValid] = useState({
+    title: true,
+    subtasks: {},
+  });
 
   const theme = useContext(ThemeContext);
+
+  const handleChangeTitle = (value) => {
+    if (value === "") setFormValid({ ...formValid, title: false });
+
+    setTitle(value);
+  };
+
+  const initialSubtasks = () => {
+    return [
+      {
+        id: getId(),
+        subtaskName: "",
+        placeholder: "e.g. Make coffee",
+        status: false,
+      },
+      {
+        id: getId(),
+        subtaskName: "",
+        placeholder: "e.g. Drink coffee & smile",
+        status: false,
+      },
+    ];
+  };
+
+  const handleAddNewSubtask = () => {
+    const newId = getId();
+    setSubtasks([
+      ...subtasks,
+      {
+        id: newId,
+        subtaskName: "",
+        placeholder: "e.g. Let's smile",
+        status: false,
+      },
+    ]);
+    setFormValid({
+      ...formValid,
+      subtasks: {
+        ...formValid.subtasks,
+        [newId]: true,
+      },
+    });
+  };
 
   const handleChangeSubtasks = (id, value) => {
     const newSubtasks = subtasks.map((subtask) => {
@@ -39,16 +73,69 @@ const NewTaskForm = ({ columns, handleAddTask, setIsAddNewTaskShown }) => {
       return subtask;
     });
     setSubtasks(newSubtasks);
+    const newValidateFormError = {
+      ...formValid,
+      subtasks: { ...formValid.subtasks, [id]: value !== "" },
+    };
+    setFormValid(newValidateFormError);
   };
 
   const handleRemoveSubtask = (id) => {
     const newSubtasks = subtasks.filter((subtask) => subtask.id !== id);
+    const newValidateFormError = { ...formValid };
+    delete newValidateFormError.subtasks[id];
+    setFormValid(newValidateFormError);
     setSubtasks(newSubtasks);
+  };
+
+  const handleFinalizeAddTask = () => {
+    const newFormValid = { ...formValid };
+    if (title === "") {
+      newFormValid.title = false;
+    }
+
+    const subtasksInvalid = subtasks.filter(
+      (subtask) => subtask.subtaskName === ""
+    );
+
+    console.log("subtasksInvalid:", subtasksInvalid);
+
+    for (let subtask of subtasksInvalid) {
+      newFormValid.subtasks[subtask.id] = false;
+    }
+
+    setFormValid(newFormValid);
+
+    if (subtasksInvalid.length === 0 && title !== "") {
+      handleAddTask({
+        taskName: title,
+        description,
+        column: status,
+        subtasks,
+      });
+    }
   };
 
   useEffect(() => {
     setStatus(columns[0]);
+    const initialSubtasksValue = initialSubtasks();
+    const initialErrorSubtasks = initialSubtasksValue.reduce(
+      (acc, subtask) => ({ ...acc, [subtask.id]: true }),
+      {}
+    );
+    setSubtasks(initialSubtasksValue);
+    setFormValid({
+      title: true,
+      subtasks: initialErrorSubtasks,
+    });
   }, []);
+
+  // useEffect(() => {
+  //   // console.log("title:", title);
+  //   // console.log("subtasks:", subtasks);
+  //   // console.log("status:", status);
+  //   console.log("formValid:", formValid);
+  // }, [formValid, subtasks, status, title]);
 
   return (
     <div className="overlay" onMouseDown={() => setIsAddNewTaskShown(false)}>
@@ -67,8 +154,9 @@ const NewTaskForm = ({ columns, handleAddTask, setIsAddNewTaskShown }) => {
             <CustomInput
               type="text"
               value={title}
-              onChangeValue={setTitle}
+              onChangeValue={handleChangeTitle}
               placeholder="e.g. Take coffee break"
+              isValid={!formValid.title}
             />
           </div>
           <div className="new-task-form-section">
@@ -88,38 +176,30 @@ const NewTaskForm = ({ columns, handleAddTask, setIsAddNewTaskShown }) => {
           </div>
           <div className="new-task-form-section">
             <p className={`bodyM new-task-form-label-${theme}`}>Subtasks</p>
-            {subtasks.map(({ id, subtaskName, placeholder }) => (
-              <div key={id} className="new-task-form--subtasks-subtask">
-                <CustomInput
-                  placeholder={placeholder}
-                  value={subtaskName}
-                  onChangeValue={(value) => handleChangeSubtasks(id, value)}
-                  customStyles={{
-                    marginBottom: "4px",
-                  }}
-                />
-                <img
-                  src={iconCross}
-                  alt="icon cross"
-                  onClick={() => handleRemoveSubtask(id)}
-                />
-              </div>
-            ))}
+            {subtasks &&
+              subtasks.map(({ id, subtaskName, placeholder }) => (
+                <div key={id} className="new-task-form--subtasks-subtask">
+                  <CustomInput
+                    placeholder={placeholder}
+                    value={subtaskName}
+                    onChangeValue={(value) => handleChangeSubtasks(id, value)}
+                    customStyles={{
+                      marginBottom: "4px",
+                    }}
+                    isValid={!formValid.subtasks[id]}
+                  />
+                  <img
+                    src={iconCross}
+                    alt="icon cross"
+                    onClick={() => handleRemoveSubtask(id)}
+                  />
+                </div>
+              ))}
             <CustomButton
               text="Add New Subtask"
               type="Secondary"
               plus
-              onClick={() =>
-                setSubtasks([
-                  ...subtasks,
-                  {
-                    id: getId(),
-                    subtaskName: "",
-                    placeholder: "e.g. Let's smile",
-                    status: false,
-                  },
-                ])
-              }
+              onClick={() => handleAddNewSubtask()}
             />
           </div>
           <div className="new-task-form-section">
@@ -134,14 +214,7 @@ const NewTaskForm = ({ columns, handleAddTask, setIsAddNewTaskShown }) => {
         <CustomButton
           text="Create Task"
           type="PrimaryS"
-          onClick={() =>
-            handleAddTask({
-              taskName: title,
-              description,
-              column: status,
-              subtasks,
-            })
-          }
+          onClick={() => handleFinalizeAddTask()}
         />
       </div>
     </div>
