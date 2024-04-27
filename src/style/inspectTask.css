@@ -1,78 +1,82 @@
 .inspect-task {
-    padding: 32px;
-    width: 480px;
-    max-width: calc(100vw - 32px);
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  padding: 32px;
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .inspect-task-light {
-    background: var(--white);
+  background: var(--white);
 }
 
 .inspect-task-dark {
-    background: var(--dark-grey);
+  background: var(--dark-grey);
 }
 
 .inspect-task-heading-light {
-    color: var(--black) !important;
+  color: var(--black) !important;
 }
 
 .inspect-task-heading-dark {
-    color: var(--white) !important;
+  color: var(--white) !important;
 }
 .inspect-task-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .inspect-task-section {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    justify-content: flex-start;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .inspect-task-form-label-light {
-    color: var(--medium-grey) !important;
+  color: var(--medium-grey) !important;
 }
 
 .inspect-task-form-label-dark {
-    color: var(--white) !important;
+  color: var(--white) !important;
 }
 
 .task-menu {
-    position: absolute;
-    top: 40px;
-    width: 160px;
-    padding: 16px;
-    border-radius: 8px;
+  position: absolute;
+  top: 40px;
+  width: 160px;
+  padding: 16px;
+  border-radius: 8px;
 }
 
 .task-menu-light {
-    background: var(--white);
+  background: var(--white);
 }
 
 .task-menu-dark {
-    background: var(--very-dark-grey-dark-bg);
+  background: var(--very-dark-grey-dark-bg);
 }
 
 .task-menu-edit {
-    color: var(--medium-grey) !important;
-    cursor: pointer;
-    margin-bottom: 16px;
-    width: 100%;
-    display: block;
+  color: var(--medium-grey) !important;
+  cursor: pointer;
+  margin-bottom: 16px;
+  width: 100%;
+  display: block;
 }
 
 .task-menu-delete {
-    color: var(--red) !important;
-    cursor: pointer;
-    width: 100%;
-    display: block;
+  color: var(--red) !important;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+
+.inspect-task-description-dark {
+  color: #fff !important;
 }
