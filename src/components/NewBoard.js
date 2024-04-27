@@ -10,6 +10,10 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
   const [columns, setColumns] = useState(["Todo", "Doing"]);
 
   const theme = useContext(ThemeContext);
+  const [formValid, setFormValid] = useState({
+    title: true,
+    columns: {},
+  });
 
   const handleRemoveSubtask = (index) => {
     const newColumns = [...columns];
@@ -49,11 +53,16 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
                       setColumns(newColumns);
                     }}
                   />
-                  <img
-                    src={iconCross}
-                    alt="icon cross"
+                  <button
+                    style={{
+                      backgroundColor: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
                     onClick={() => handleRemoveSubtask(index)}
-                  />
+                  >
+                    <img src={iconCross} alt="icon cross" />
+                  </button>
                 </div>
               );
             })}
