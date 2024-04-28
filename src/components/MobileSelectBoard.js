@@ -29,7 +29,7 @@ const MobileSelectBoard = ({
         </p>
         {boards &&
           boards.map(({ boardName, id }) => (
-            <div
+            <button
               className={`mobile-select-board-board ${
                 id === selectedId
                   ? "mobile-select-board-board-selected"
@@ -49,11 +49,11 @@ const MobileSelectBoard = ({
               >
                 {boardName}
               </p>
-            </div>
+            </button>
           ))}
         {/* ADD NEW BOARD */}
-        <div
-          className="mobile-select-board-board mobile-select-board-board-add"
+        <button
+          className={`mobile-select-board-board mobile-select-board-board-add mobile-select-board-board-${theme}`}
           onClick={() => {
             setIsAddNewBoardShown(true);
             setIsMobileSelectBoardShown(false);
@@ -61,7 +61,7 @@ const MobileSelectBoard = ({
         >
           <img src={boardIcon} alt="board icon" />
           <p className="headingM">+Create New Board</p>
-        </div>
+        </button>
         {/* THEME TOGGLER */}
         <div
           className={`sidebar-toggle-theme sidebar-toggle-theme-${theme} sidebar-toggle-theme-mobile`}
