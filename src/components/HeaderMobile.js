@@ -6,7 +6,7 @@ import mobileLogo from "../assets/images/logo-mobile.svg";
 import ThemeContext from "../ThemeContext";
 import CustomButton from "./CustomButton";
 
-const Header = ({
+const HeaderMobile = ({
   boardName,
   isBoardEmpty,
   setIsAddNewTaskShown,
@@ -24,17 +24,20 @@ const Header = ({
     setIsMenuShown(false);
   };
 
+  const handleHideAllModals = () => {
+    isMobileSelectBoardShown && setIsMobileSelectBoardShown(false);
+    setIsAddNewTaskShown(false);
+    setIsEditTaskShown(false);
+    setIsEditBoardShown(false);
+    setIsDeleteTaskShown(false);
+    setIsDeleteBoardShown(false);
+  };
+
   return (
     <div
       className={`mobile-header mobile-header-${theme}`}
-      onMouseDown={() => {
-        isMobileSelectBoardShown && setIsMobileSelectBoardShown(false);
-        setIsAddNewTaskShown(false);
-        setIsEditTaskShown(false);
-        setIsEditBoardShown(false);
-        setIsDeleteTaskShown(false);
-        setIsDeleteBoardShown(false);
-      }}
+      onMouseDown={() => handleHideAllModals()}
+      // onTouchStart={() => handleHideAllModals()}
     >
       <img src={mobileLogo} alt="logo" className="mobile-logo" />
       <div
@@ -42,14 +45,18 @@ const Header = ({
         onMouseDown={() =>
           setIsMobileSelectBoardShown(!isMobileSelectBoardShown)
         }
+        // onTouchEnd={() =>
+        //   setIsMobileSelectBoardShown(!isMobileSelectBoardShown)
+        // }
       >
-        {boardName}
+        <p>{boardName}</p>
         <img
           src={isMenuShown ? arrowUp : arrowDown}
           alt="arrow"
           className="arrow"
         />
       </div>
+
       <div className="mobile-header-buttons">
         <CustomButton
           type="PrimaryL"
@@ -110,4 +117,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default HeaderMobile;
