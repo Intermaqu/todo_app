@@ -1,101 +1,100 @@
 .board {
-    padding: 24px;
-    gap: 24px;
-    height: calc(100vh - 96px);
-    width: calc(100vw - 300px);
-    overflow-x: scroll;
-    position: relative;
+  padding: 24px;
+  gap: 24px;
+  height: 100%;
+  overflow-x: scroll;
+  position: relative;
 }
 
 .board-wrapper {
-    height: calc(100vh - 96px);
-    width: calc(100vw - 300px);
+  height: 100vh;
+  /* width: calc(100vw - 300px); */
 }
 
 .board-sidebar-hidden {
-    width: 100vw !important;
+  width: 100vw;
 }
 
 .board::-webkit-scrollbar {
-    background: transparent;
+  background: transparent;
 }
 
 .board-scrollable-columns {
-    display: flex;
-    gap: 24px;
-    height: 100%;
+  display: flex;
+  gap: 24px;
+  height: 100%;
 }
 
 .board-empty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .board-empty-text {
-    color: var(--medium-grey) !important;
-    text-align: center;
+  color: var(--medium-grey) !important;
+  text-align: center;
 }
 
 .board-light {
-    background: var(--light-grey-light-bg);
+  background: var(--light-grey-light-bg);
 }
 
 .board-dark {
-    background: var(--very-dark-grey-dark-bg);
+  background: var(--very-dark-grey-dark-bg);
 }
 
 .sidebar-toggle-button {
-    position: sticky;
-    left: -20px;
-    bottom: 32px;
-    height: 48px;
-    width: 56px;
-    border-radius: 0 24px 24px 0;
-    background: var(--main-purple);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  position: sticky;
+  left: -20px;
+  bottom: 32px;
+  height: 48px;
+  width: 56px;
+  border-radius: 0 24px 24px 0;
+  background: var(--main-purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .sidebar-toggle-button:hover {
-    background: var(--main-purple-hover);
+  background: var(--main-purple-hover);
 }
 
 .sidebar-toggle-button > img {
-    width: 16px;
+  width: 16px;
 }
 
 .board--add-column {
-    display: flex;
-    width: 280px;
-    border-radius: 6px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin-top: 39px;
-    height: calc(100% - 39px);
-    user-select: none;
+  display: flex;
+  width: 280px;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 39px;
+  height: calc(100% - 39px);
+  user-select: none;
 }
 
 .board--add-column-light {
-    background: linear-gradient(
-        180deg,
-        #e9effa 0%,
-        rgba(233, 239, 250, 0.5) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    #e9effa 0%,
+    rgba(233, 239, 250, 0.5) 100%
+  );
 }
 
 .board--add-column-dark {
-    background: linear-gradient(
-        180deg,
-        rgba(43, 44, 55, 0.25) 0%,
-        rgba(43, 44, 55, 0.125) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(43, 44, 55, 0.25) 0%,
+    rgba(43, 44, 55, 0.125) 100%
+  );
 }
 
 .board--add-column > p {
-    color: var(--medium-grey) !important;
+  color: var(--medium-grey) !important;
 }

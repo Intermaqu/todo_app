@@ -4,6 +4,7 @@ import ThemeContext from "../ThemeContext";
 import Column from "./Column";
 import CustomButton from "./CustomButton";
 import eyeIcon from "../assets/images/icon-show-sidebar.svg";
+import { MOBILE_BREAKPOINT } from "../utils/constants";
 
 const Board = ({
   columns,
@@ -12,6 +13,7 @@ const Board = ({
   setIsAddNewColumnShown,
   isMobile,
   popups,
+  windowWidth,
 }) => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isSpaceClicked, setIsSpaceClicked] = useState(false);
@@ -94,7 +96,7 @@ const Board = ({
   }, [isPopupOpen]);
 
   return (
-    <div className="board-wrapper">
+    <div className={`board-wrapper`}>
       <div
         className={`board ${
           columns.length === 0 && "board-empty"
