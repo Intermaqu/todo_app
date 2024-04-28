@@ -287,12 +287,12 @@ function App() {
     }
     if (currentWidth <= 700) {
       setIsMobile(false);
-      setIsSidebarOpen(false);
+      // setIsSidebarOpen(false);
       return;
     }
 
     setIsMobile(false);
-    setIsSidebarOpen(true);
+    // setIsSidebarOpen(true);
     return;
   };
 
@@ -413,6 +413,7 @@ function App() {
                   setIsEditBoardShown={setIsEditBoardShown}
                   setIsDeleteBoardShown={setIsDeleteBoardShown}
                   isMobile={isMobile}
+                  windowWidth={windowWidth}
                 />
               )}
               <Board
@@ -432,6 +433,7 @@ function App() {
                   isDeleteBoardShown,
                   isDeleteTaskShown,
                   isMobileSelectBoardShown,
+                  windowWidth,
                 }}
               />
             </div>
