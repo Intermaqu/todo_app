@@ -20,13 +20,13 @@ const CustomButton = ({
     ThemeToggler: "button-theme-toggler",
   };
   const buttonType = types[type] || types["PrimaryL"];
-  const style = theme === "light" ? buttonType : `${buttonType}-dark`;
+  const themeStyle = theme === "light" ? buttonType : `${buttonType}-dark`;
 
   return (
     <button
       onClick={onClick}
-      className={style}
-      style={{ width: width || "fit-content", ...customStyles }}
+      className={themeStyle}
+      style={{ width: width, ...customStyles }}
     >
       {plus ? `+ ${text}` : text}
     </button>
