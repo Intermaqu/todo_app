@@ -125,8 +125,10 @@
 .hamburger-menu-edit {
   color: var(--medium-grey) !important;
   margin-bottom: 16px;
+  cursor: pointer;
 }
 
 .hamburger-menu-delete {
   color: var(--red) !important;
+  cursor: pointer;
 }

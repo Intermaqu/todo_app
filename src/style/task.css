@@ -1,29 +1,30 @@
 .task {
-    width: 100%;
-    padding: 16px 23px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    box-shadow: 0 4px 6px rgba(54, 78, 126, 0.1);
-    border-radius: 8px;
-    word-wrap: break-word;
+  width: 100%;
+  padding: 16px 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 6px rgba(54, 78, 126, 0.1);
+  border-radius: 8px;
+  word-wrap: break-word;
+  cursor: pointer;
 }
 
 .task-light {
-    background: var(--white);
+  background: var(--white);
 }
 
 .task--title-light {
-    color: var(--black);
+  color: var(--black);
 }
 
 .task-dark {
-    background: var(--dark-grey);
+  background: var(--dark-grey);
 }
 
 p.task--title-dark {
-    color: var(--white);
+  color: var(--white);
 }
 .task--subtasks {
-    color: var(--medium-grey) !important;
+  color: var(--medium-grey) !important;
 }

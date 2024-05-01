@@ -1,63 +1,66 @@
 .custom-dropdown-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    background: inherit;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: inherit;
+  position: relative;
 }
 
 .custom-dropdown-content {
-    height: 40px;
-    border: 1px solid var(--medium-grey-025);
-    border-radius: 4px;
-    padding: 8.5px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: inherit;
-    width: 100%;
-    font-size: var(--font-size-s);
+  height: 40px;
+  border: 1px solid var(--medium-grey-025);
+  border-radius: 4px;
+  padding: 8.5px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: inherit;
+  width: 100%;
+  font-size: var(--font-size-s);
+  appearance: none;
+  background: url("../assets/images/icon-chevron-down.svg") no-repeat;
+  background-position: right 12px center;
+  padding-right: 30px; /* Make room for the image */
 }
 
 .custom-dropdown-content-dark {
-    color: var(--white) !important;
+  color: var(--white) !important;
 }
 
 .custom-dropdown-content-opened {
-    border: 1px solid var(--main-purple);
+  border: 1px solid var(--main-purple);
 }
 
 .custom-dropdown-content > img {
-    width: 16px;
+  width: 16px;
 }
 
 .custom-dropdown-options {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background: inherit;
-    width: 100%;
-    padding: 16px;
-    align-items: center;
-    justify-content: flex-start;
-    border-radius: 8px;
-    position: absolute;
-    top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: inherit;
+  width: 100%;
+  padding: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 8px;
+  position: absolute;
+  top: 40px;
 }
 
-.custom-dropdown-options-light {
-    background: var(--white);
+.custom-dropdown-option-light {
+  background: var(--white);
 }
 
-.custom-dropdown-options-dark {
-    background: var(--very-dark-grey-dark-bg) !important;
+.custom-dropdown-option-dark {
+  background: var(--very-dark-grey-dark-bg) !important;
 }
 
 .custom-dropdown-option {
-    color: var(--medium-grey);
-    font-size: var(--font-size-s);
-    font-weight: var(--font-weight-medium);
-    width: 100%;
-    cursor: pointer;
-    background: inherit;
+  color: var(--medium-grey);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  padding: 16px;
+  height: 40px;
 }
