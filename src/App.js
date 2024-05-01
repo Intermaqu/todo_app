@@ -193,8 +193,7 @@ function App() {
 
   const handleAddBoard = (boardName, columns) => {
     const newColumns = columns.map((column, index) => ({
-      id: getId(),
-      columnName: column,
+      ...column,
       tasks: [],
       dotColor: colorPalette[index],
     }));
