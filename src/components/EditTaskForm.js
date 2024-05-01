@@ -61,7 +61,6 @@ const EditTaskForm = ({
 
   const handleEditTaskValidate = () => {
     const newFormValid = { ...formValid };
-    // console.log("newFormValid", newFormValid);
     newFormValid.title = title !== "";
 
     const subtasksInvalid = subtasks.filter(
@@ -77,7 +76,6 @@ const EditTaskForm = ({
     setFormValid(newFormValid);
 
     if (subtasksInvalid.length === 0 && title !== "") {
-      // console.log("Form Valid");
       handleEditTask(
         title,
         description,
@@ -92,17 +90,14 @@ const EditTaskForm = ({
       setIsEditTaskShown(false);
       return;
     }
-    // console.log("Form Invalid");
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      // console.log("ENTER");
       handleEditTaskValidate();
       return;
     }
     if (e.key === "Escape") {
-      // console.log("ESCAPE");
       setIsEditTaskShown(false);
       return;
     }

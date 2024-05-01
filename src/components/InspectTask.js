@@ -19,13 +19,7 @@ const InspectTask = ({
   const [isTaskMenuShown, setIsTaskMenuShown] = useState(false);
 
   const handleChangeTask = (payload) => {
-    // console.log(payload);
     if (payload.id) {
-      // payload = {
-      //     id: payload.id,
-      //     columnName: payload.columnName,
-      // }
-
       handleEditTask(
         taskName,
         description,

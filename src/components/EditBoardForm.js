@@ -81,11 +81,9 @@ const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
     setFormValid(newFormValid);
 
     if (newFormValid.title && columnsInvalid.length === 0) {
-      console.log("VALID");
       handleEditBoard(title, columns);
       return;
     }
-    console.log("INVALID");
   };
 
   return (
