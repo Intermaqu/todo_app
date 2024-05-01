@@ -15,13 +15,25 @@ const EditTaskForm = ({
 }) => {
   const [title, setTitle] = useState(task.taskName);
   const [description, setDescription] = useState(task.taskDescription || "");
-  const [status, setStatus] = useState({
+  const [currentColumn, setCurrentColumn] = useState({
     columnName,
     id: columnId,
   });
   const [subtasks, setSubtasks] = useState(task.subtasks);
+  const [formValid, setFormValid] = useState({
+    title: true,
+    subtasks: task.subtasks.reduce((acc, subtask) => {
+      acc[subtask.id] = true;
+      return acc;
+    }, {}),
+  });
 
   const theme = useContext(ThemeContext);
+
+  const handleChangeTitle = (value) => {
+    setFormValid({ ...formValid, title: value !== "" });
+    setTitle(value);
+  };
 
   const handleChangeSubtasks = (id, value) => {
     const newSubtasks = subtasks.map((subtask) => {
@@ -33,16 +45,75 @@ const EditTaskForm = ({
       }
       return subtask;
     });
+    const newFormValid = { ...formValid };
+    newFormValid.subtasks[id] = value !== "";
+    setFormValid(newFormValid);
     setSubtasks(newSubtasks);
   };
 
   const handleRemoveSubtask = (id) => {
     const newSubtasks = subtasks.filter((subtask) => subtask.id !== id);
+    const newFormValid = { ...formValid };
+    delete newFormValid.subtasks[id];
+    setFormValid(newFormValid);
     setSubtasks(newSubtasks);
   };
 
+  const handleEditTaskValidate = () => {
+    const newFormValid = { ...formValid };
+    // console.log("newFormValid", newFormValid);
+    newFormValid.title = title !== "";
+
+    const subtasksInvalid = subtasks.filter(
+      (subtask) => subtask.subtaskName === ""
+    );
+
+    for (let subtask of subtasksInvalid) {
+      newFormValid.subtasks[subtask.id] = false;
+    }
+    console.log("subtasks", subtasks);
+    console.log("subtasksInvalid", subtasksInvalid);
+
+    setFormValid(newFormValid);
+
+    if (subtasksInvalid.length === 0 && title !== "") {
+      // console.log("Form Valid");
+      handleEditTask(
+        title,
+        description,
+        subtasks,
+        {
+          columnName: currentColumn.columnName,
+          columnId: currentColumn.id,
+        },
+        columnId,
+        task.id
+      );
+      setIsEditTaskShown(false);
+      return;
+    }
+    // console.log("Form Invalid");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      // console.log("ENTER");
+      handleEditTaskValidate();
+      return;
+    }
+    if (e.key === "Escape") {
+      // console.log("ESCAPE");
+      setIsEditTaskShown(false);
+      return;
+    }
+  };
+
   return (
-    <div className="overlay" onMouseDown={() => setIsEditTaskShown(false)}>
+    <div
+      className="overlay"
+      onMouseDown={() => setIsEditTaskShown(false)}
+      onKeyDown={handleKeyDown}
+    >
       <div
         className={`new-task-form new-task-form-${theme}`}
         onMouseDown={(e) => {
@@ -56,8 +127,9 @@ const EditTaskForm = ({
             <CustomInput
               type="text"
               value={title}
-              onChangeValue={setTitle}
+              onChangeValue={handleChangeTitle}
               placeholder="e.g. Take coffee break"
+              isValid={!formValid.title}
             />
           </div>
           <div className="new-task-form-section">
@@ -86,6 +158,7 @@ const EditTaskForm = ({
                   customStyles={{
                     marginBottom: "4px",
                   }}
+                  isValid={!formValid.subtasks[id]}
                 />
                 <img
                   src={iconCross}
@@ -115,28 +188,15 @@ const EditTaskForm = ({
             <p className={`bodyM new-task-form-label-${theme}`}>Status</p>
             <CustomDropdown
               options={columns}
-              value={status}
-              setValue={setStatus}
+              value={currentColumn}
+              setValue={setCurrentColumn}
             />
           </div>
         </div>
         <CustomButton
           text="Edit Task"
           type="PrimaryS"
-          onClick={() => {
-            handleEditTask(
-              title,
-              description,
-              subtasks,
-              {
-                columnName: status.columnName,
-                columnId: status.id,
-              },
-              columnId,
-              task.id
-            );
-            setIsEditTaskShown(false);
-          }}
+          onClick={handleEditTaskValidate}
         />
       </div>
     </div>
