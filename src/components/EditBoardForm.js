@@ -9,23 +9,46 @@ import iconCross from "../assets/images/icon-cross.svg";
 const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
   const [title, setTitle] = useState(board.boardName);
   const [columns, setColumns] = useState(board.columns);
+  const [formValid, setFormValid] = useState({
+    title: true,
+    columns: board.columns.reduce((acc, column) => {
+      acc[column.id] = true;
+      return acc;
+    }, {}),
+  });
 
   const theme = useContext(ThemeContext);
 
+  const handleChangeBoardName = (value) => {
+    setFormValid({ ...formValid, title: value !== "" });
+    setTitle(value);
+  };
+
   const handleAddColumn = () => {
+    const id = getId();
     const newColumns = [
       ...columns,
       {
         columnName: "",
-        id: getId(),
+        id: id,
         tasks: [],
       },
     ];
     setColumns(newColumns);
+    setFormValid({
+      ...formValid,
+      columns: {
+        ...formValid.columns,
+        [id]: true,
+      },
+    });
   };
 
   const handleRemoveColumn = (id) => {
     const newColumns = columns.filter((column) => column.id !== id);
+    const newFormValid = { ...formValid };
+    delete newFormValid.columns[id];
+    setFormValid(newFormValid);
     setColumns(newColumns);
   };
 
@@ -33,12 +56,36 @@ const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
     const newColumns = columns.map((column) => {
       if (column.id !== id) return column;
 
+      const newFormValid = { ...formValid };
+      newFormValid.columns[id] = value !== "";
+      setFormValid(newFormValid);
+
       return {
         ...column,
         columnName: value,
       };
     });
     setColumns(newColumns);
+  };
+
+  const handleEditBoardValidated = () => {
+    const newFormValid = { ...formValid };
+    newFormValid.title = title !== "";
+
+    const columnsInvalid = columns.filter((column) => column.columnName === "");
+
+    columnsInvalid.forEach((column) => {
+      newFormValid.columns[column.id] = false;
+    });
+
+    setFormValid(newFormValid);
+
+    if (newFormValid.title && columnsInvalid.length === 0) {
+      console.log("VALID");
+      handleEditBoard(title, columns);
+      return;
+    }
+    console.log("INVALID");
   };
 
   return (
@@ -55,8 +102,9 @@ const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
             </p>
             <CustomInput
               value={title}
-              onChangeValue={setTitle}
+              onChangeValue={handleChangeBoardName}
               placeholder="Board Name"
+              isValid={!formValid.title}
             />
           </div>
           <div className="edit-board-section">
@@ -71,6 +119,7 @@ const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
                     handleChangeColumnName(column.id, value)
                   }
                   placeholder="Column Name"
+                  isValid={!formValid.columns[column.id]}
                 />
                 <button
                   style={{
@@ -94,7 +143,7 @@ const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
         </div>
         <CustomButton
           text="Save Changes"
-          onClick={() => handleEditBoard(title, columns)}
+          onClick={handleEditBoardValidated}
           type="PrimaryS"
         />
       </div>
