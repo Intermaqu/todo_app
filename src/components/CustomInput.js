@@ -14,32 +14,13 @@ const CustomInput = ({
   const theme = useContext(ThemeContext);
   const inputRef = useRef(null);
 
-  // const [error, setError] = useState(isValid);
-
   const handleClickParent = () => {
     inputRef.current && inputRef.current.focus();
   };
 
-  const handleChange = (e) => {
-    onChangeValue(e.target.value);
-    // if (e.target.value.length > 0) {
-    //   setError(false);
-    // } else {
-    //   setError(true);
-    // }
-  };
-
-  // const className = `custom-input-wrapper custom-input-wrapper-${theme} ${
-  //   error && "custom-input-wrapper-invalid"
-  // }`;
   const className = `custom-input-wrapper custom-input-wrapper-${theme} ${
     isValid && "custom-input-wrapper-invalid"
   }`;
-
-  useEffect(() => {
-    // setError(isValid);
-    console.log("isvalid", isValid);
-  }, [isValid]);
 
   return (
     <div
@@ -49,7 +30,7 @@ const CustomInput = ({
     >
       {type === "textarea" ? (
         <textarea
-          onChange={(e) => handleChange(e)}
+          onChange={(e) => onChangeValue(e.target.value)}
           value={value}
           placeholder={placeholder}
           style={{ width: width, height: "100%" }}
@@ -59,7 +40,7 @@ const CustomInput = ({
       ) : (
         <input
           type={type}
-          onChange={(e) => handleChange(e)}
+          onChange={(e) => onChangeValue(e.target.value)}
           value={value}
           placeholder={placeholder}
           style={{ width: width }}
