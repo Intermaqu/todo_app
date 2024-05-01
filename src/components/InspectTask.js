@@ -19,6 +19,7 @@ const InspectTask = ({
   const [isTaskMenuShown, setIsTaskMenuShown] = useState(false);
 
   const handleChangeTask = (payload) => {
+    // console.log(payload);
     if (payload.id) {
       // payload = {
       //     id: payload.id,
@@ -71,6 +72,20 @@ const InspectTask = ({
       return;
     }
   };
+
+  const handleCloseModal = (e) => {
+    if (e.key === "Escape") {
+      setIsInspectTaskShown(false);
+      setIsTaskMenuShown(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleCloseModal);
+    return () => {
+      window.removeEventListener("keydown", handleCloseModal);
+    };
+  }, []);
 
   return (
     <div
