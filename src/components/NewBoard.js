@@ -4,22 +4,86 @@ import ThemeContext from "../ThemeContext";
 import CustomInput from "./CustomInput";
 import CustomButton from "./CustomButton";
 import iconCross from "../assets/images/icon-cross.svg";
+import { getId } from "../utils/generateId";
 
 const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
+  const TodoId = getId();
+  const DoingId = getId();
   const [title, setTitle] = useState("");
-  const [columns, setColumns] = useState(["Todo", "Doing"]);
+  const [columns, setColumns] = useState([
+    { columnName: "Todo", id: TodoId },
+    { columnName: "Doing", id: DoingId },
+  ]);
 
   const theme = useContext(ThemeContext);
   const [formValid, setFormValid] = useState({
     title: true,
-    columns: {},
+    columns: {
+      [TodoId]: true,
+      [DoingId]: true,
+    },
   });
 
-  const handleRemoveSubtask = (index) => {
-    const newColumns = [...columns];
-    newColumns.splice(index, 1);
+  const handleChangeBoardName = (value) => {
+    setFormValid({ ...formValid, title: value !== "" });
+    setTitle(value);
+  };
+
+  const handleAddNewColumn = () => {
+    const id = getId();
+    const newColumns = [...columns, { columnName: "", id: id }];
+
+    const newFormValid = { ...formValid };
+    newFormValid.columns[id] = true;
+
+    setFormValid(newFormValid);
     setColumns(newColumns);
   };
+
+  const handleRemoveColumn = (index) => {
+    const newColumns = [...columns];
+    newColumns.splice(index, 1);
+
+    const newFormValid = { ...formValid };
+    delete newFormValid.columns[columns[index].id];
+
+    setFormValid(newFormValid);
+    setColumns(newColumns);
+  };
+
+  const handleChangeColumnName = (index, value) => {
+    const newColumns = [...columns];
+    newColumns[index].columnName = value;
+
+    const newFormValid = { ...formValid };
+    newFormValid.columns[columns[index].id] = value !== "";
+
+    setFormValid(newFormValid);
+    setColumns(newColumns);
+  };
+
+  const handleAddBoardValidated = () => {
+    const newFormValid = { ...formValid };
+
+    if (title === "") {
+      newFormValid.title = false;
+    }
+
+    const invalidColumns = columns.filter((column) => column.columnName === "");
+    invalidColumns.forEach((column) => {
+      newFormValid.columns[column.id] = false;
+    });
+
+    setFormValid(newFormValid);
+
+    if (title !== "" && invalidColumns.length === 0) {
+      handleAddBoard(title, columns);
+    }
+  };
+
+  useEffect(() => {
+    console.log(formValid);
+  }, [formValid]);
 
   return (
     <div className={`overlay`} onMouseDown={() => setIsAddNewBoardShown(false)}>
@@ -36,7 +100,8 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
             <CustomInput
               placeholder={`e.g. Web Design`}
               value={title}
-              onChangeValue={setTitle}
+              onChangeValue={handleChangeBoardName}
+              isValid={!formValid.title}
             />
           </div>
           <div className={`add-new-board--section`}>
@@ -46,12 +111,11 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
                 <div className={`new-board-form--columns-column`} key={index}>
                   <CustomInput
                     placeholder="e.g. Column Name"
-                    value={column}
+                    value={column.columnName}
                     onChangeValue={(value) => {
-                      const newColumns = [...columns];
-                      newColumns[index] = value;
-                      setColumns(newColumns);
+                      handleChangeColumnName(index, value);
                     }}
+                    isValid={!formValid.columns[column.id]}
                   />
                   <button
                     style={{
@@ -59,7 +123,7 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
                       border: "none",
                       cursor: "pointer",
                     }}
-                    onClick={() => handleRemoveSubtask(index)}
+                    onClick={() => handleRemoveColumn(index)}
                   >
                     <img src={iconCross} alt="icon cross" />
                   </button>
@@ -68,9 +132,7 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
             })}
             <CustomButton
               text={`Add New Column`}
-              onClick={() => {
-                setColumns([...columns, ""]);
-              }}
+              onClick={handleAddNewColumn}
               plus
               type="Secondary"
             />
@@ -79,9 +141,7 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
         <CustomButton
           text={`Create New Board`}
           type="PrimaryS"
-          onClick={() => {
-            handleAddBoard(title, columns);
-          }}
+          onClick={handleAddBoardValidated}
         />
       </div>
     </div>
