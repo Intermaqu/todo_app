@@ -1,11 +1,17 @@
 .inspect-task {
   padding: 32px;
+  margin-top: 32px;
   width: 480px;
   max-width: calc(100vw - 32px);
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  max-height: 85vh;
+}
+
+.inspect-task-scrollable {
+  overflow-y: auto;
 }
 
 .inspect-task-light {
