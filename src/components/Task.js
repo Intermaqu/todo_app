@@ -3,15 +3,7 @@ import "../style/task.css";
 import ThemeContext from "../ThemeContext";
 import InspectTaskContext from "../InspectTaskContext";
 
-const Task = ({
-  name,
-  description,
-  subtasks,
-  columnId,
-  columnName,
-  taskId,
-  isSpaceCliced = false,
-}) => {
+const Task = ({ name, subtasks, columnId, taskId, isSpaceCliced = false }) => {
   const theme = useContext(ThemeContext);
   const handleInspectTask = useContext(InspectTaskContext);
 
