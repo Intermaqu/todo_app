@@ -89,7 +89,7 @@ const HeaderMobile = ({
             <div
               className={`hamburger-menu hamburger-menu-${theme} hamburger-menu-mobile`}
             >
-              <span
+              <button
                 className="hamburger-menu-edit bodyL"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -98,8 +98,8 @@ const HeaderMobile = ({
                 }}
               >
                 Edit Board
-              </span>
-              <span
+              </button>
+              <button
                 className="hamburger-menu-delete bodyL"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -108,7 +108,7 @@ const HeaderMobile = ({
                 }}
               >
                 Delete Board
-              </span>
+              </button>
             </div>
           )}
         </div>
