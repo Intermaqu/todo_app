@@ -98,8 +98,6 @@ const NewTaskForm = ({ columns, handleAddTask, setIsAddNewTaskShown }) => {
       (subtask) => subtask.subtaskName === ""
     );
 
-    console.log("subtasksInvalid:", subtasksInvalid);
-
     for (let subtask of subtasksInvalid) {
       newFormValid.subtasks[subtask.id] = false;
     }
@@ -129,13 +127,6 @@ const NewTaskForm = ({ columns, handleAddTask, setIsAddNewTaskShown }) => {
       subtasks: initialErrorSubtasks,
     });
   }, []);
-
-  // useEffect(() => {
-  //   // console.log("title:", title);
-  //   // console.log("subtasks:", subtasks);
-  //   // console.log("status:", status);
-  //   console.log("formValid:", formValid);
-  // }, [formValid, subtasks, status, title]);
 
   return (
     <div className="overlay" onMouseDown={() => setIsAddNewTaskShown(false)}>
