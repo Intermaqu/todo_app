@@ -138,7 +138,7 @@ const InspectTask = ({
         <p className={`bodyL inspect-task-description-${theme}`}>
           {description}
         </p>
-        <div className="inspect-task-section">
+        <div className="inspect-task-section inspect-task-scrollable">
           <p className={`bodyM inspect-task-form-label-${theme}`}>{`Subtasks (${
             currentSubtasks.filter((subtask) => subtask.status).length
           } of ${currentSubtasks.length})`}</p>
