@@ -13,7 +13,6 @@ const Board = ({
   setIsAddNewColumnShown,
   isMobile,
   popups,
-  windowWidth,
 }) => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isSpaceClicked, setIsSpaceClicked] = useState(false);
@@ -52,10 +51,6 @@ const Board = ({
     setIsPopupOpen(false);
   };
 
-  useEffect(() => {
-    getIsPopupOpen();
-  }, [popups]);
-
   const handleMouseMove = (e) => {
     if (!isMouseDown) return;
     if (!isSpaceClicked) return;
@@ -67,6 +62,10 @@ const Board = ({
     boardRef.current.scrollLeft = scrollLeft - walkX;
     boardRef.current.scrollTop = scrollTop - walkY;
   };
+
+  useEffect(() => {
+    getIsPopupOpen();
+  }, [popups]);
 
   useEffect(() => {
     const handleSpacePressed = (e) => {
