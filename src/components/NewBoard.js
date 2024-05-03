@@ -81,10 +81,6 @@ const NewBoard = ({ handleAddBoard, setIsAddNewBoardShown }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(formValid);
-  }, [formValid]);
-
   return (
     <div className={`overlay`} onMouseDown={() => setIsAddNewBoardShown(false)}>
       <div
