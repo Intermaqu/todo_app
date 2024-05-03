@@ -20,6 +20,7 @@ import EditBoardForm from "./components/EditBoardForm";
 import DeleteBoard from "./components/DeleteBoard";
 import DeleteTask from "./components/DeleteTask";
 import colorPalette from "./utils/colorPalette";
+import { MOBILE_BREAKPOINT, DESKTOP_BREAKPOINT } from "./utils/constants";
 
 import { getId } from "./utils/generateId";
 import InspectTask from "./components/InspectTask";
@@ -279,12 +280,12 @@ function App() {
   const handleIsMobile = () => {
     const currentWidth = ref.current.clientWidth;
     setWindowWidth(currentWidth);
-    if (currentWidth <= 480) {
+    if (currentWidth <= MOBILE_BREAKPOINT) {
       setIsMobile(true);
       setIsSidebarOpen(false);
       return;
     }
-    if (currentWidth <= 700) {
+    if (currentWidth <= DESKTOP_BREAKPOINT) {
       setIsMobile(false);
       // setIsSidebarOpen(false);
       return;
@@ -298,12 +299,12 @@ function App() {
   useLayoutEffect(() => {
     const currentWidth = window.innerWidth;
     setWindowWidth(currentWidth);
-    if (currentWidth <= 480) {
+    if (currentWidth <= MOBILE_BREAKPOINT) {
       setIsMobile(true);
       setIsSidebarOpen(false);
       return;
     }
-    if (currentWidth <= 700) {
+    if (currentWidth <= DESKTOP_BREAKPOINT) {
       setIsMobile(false);
       setIsSidebarOpen(false);
       return;
@@ -432,7 +433,6 @@ function App() {
                   isDeleteBoardShown,
                   isDeleteTaskShown,
                   isMobileSelectBoardShown,
-                  windowWidth,
                 }}
               />
             </div>
