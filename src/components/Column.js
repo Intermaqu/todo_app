@@ -11,10 +11,10 @@ const Column = ({
 }) => {
   return (
     <div className="column">
-      <div className="headingS column--name">
+      <div className="headingS column--header">
         <p className="dot" style={{ backgroundColor: dotColor }}></p>
+        <p className="column--header--name">{columnName}</p>
         <p>
-          {columnName}
           {` (${tasks.reduce((acc, { subtasksDone, subtasksAll }) => {
             return subtasksDone === subtasksAll ? acc + 1 : acc;
           }, 0)})`}
@@ -28,7 +28,6 @@ const Column = ({
               name={taskName}
               subtasks={subtasks}
               columnId={columnId}
-              columnName={columnName}
               taskId={id}
               isSpaceCliced={isSpaceCliced}
             />
