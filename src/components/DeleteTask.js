@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import CustomButton from "./CustomButton";
 import ThemeContext from "../ThemeContext";
 import "../style/deleteTask.css";
@@ -15,6 +15,24 @@ const DeleteTask = ({
   const maxWidth = isMobile
     ? { maxWidth: "100%" }
     : { maxWidth: "48%", width: "200px" };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleDeleteTask(task.id, columnId);
+      setIsDeleteTaskShown(false);
+      return;
+    }
+
+    if (e.key === "Escape") {
+      setIsDeleteTaskShown(false);
+      return;
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <div className="overlay" onMouseDown={() => setIsDeleteTaskShown(false)}>
