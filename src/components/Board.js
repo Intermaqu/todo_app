@@ -124,6 +124,7 @@ const Board = ({
                 tasks={tasks}
                 columnId={id}
                 isSpaceClicked={isSpaceClicked}
+                isPopupOpen={isPopupOpen}
               />
             ))}
             <div

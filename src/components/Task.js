@@ -3,7 +3,14 @@ import "../style/task.css";
 import ThemeContext from "../ThemeContext";
 import InspectTaskContext from "../InspectTaskContext";
 
-const Task = ({ name, subtasks, columnId, taskId, isSpaceCliced = false }) => {
+const Task = ({
+  name,
+  subtasks,
+  columnId,
+  taskId,
+  isSpaceCliced = false,
+  isPopupOpen,
+}) => {
   const theme = useContext(ThemeContext);
   const handleInspectTask = useContext(InspectTaskContext);
 
@@ -16,8 +23,16 @@ const Task = ({ name, subtasks, columnId, taskId, isSpaceCliced = false }) => {
           columnId,
         });
       }}
+      tabIndex={isPopupOpen ? -1 : 0}
       style={{
         userSelect: isSpaceCliced ? "none" : "auto",
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter")
+          handleInspectTask({
+            taskId,
+            columnId,
+          });
       }}
     >
       <p className={`headingM task--title-${theme}`}>{name}</p>

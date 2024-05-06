@@ -2,12 +2,6 @@ import "./App.css";
 import ThemeContext from "./ThemeContext";
 import InspectTaskContext from "./InspectTaskContext";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import CustomButton from "./components/CustomButton";
-import CustomCheckbox from "./components/CustomCheckbox";
-import CustomInput from "./components/CustomInput";
-import CustomDropdown from "./components/CustomDropdown";
-import Task from "./components/Task";
-import Column from "./components/Column";
 import Board from "./components/Board";
 import initialState from "./data.json";
 import Sidebar from "./components/Sidebar";
@@ -296,6 +290,30 @@ function App() {
     return;
   };
 
+  const handleIsAnyModalOpen = () => {
+    return (
+      isAddNewTaskShown ||
+      isAddNewBoardShown ||
+      isAddNewColumnShown ||
+      isEditTaskShown ||
+      isEditBoardShown ||
+      isDeleteBoardShown ||
+      isDeleteTaskShown ||
+      isInspectTaskShown
+    );
+  };
+
+  const closeAllModals = () => {
+    setIsAddNewTaskShown(false);
+    setIsAddNewBoardShown(false);
+    setIsAddNewColumnShown(false);
+    setIsEditTaskShown(false);
+    setIsEditBoardShown(false);
+    setIsDeleteBoardShown(false);
+    setIsDeleteTaskShown(false);
+    setIsInspectTaskShown(false);
+  };
+
   useLayoutEffect(() => {
     const currentWidth = window.innerWidth;
     setWindowWidth(currentWidth);
@@ -349,25 +367,7 @@ function App() {
     <ThemeContext.Provider value={theme}>
       {state ? (
         <InspectTaskContext.Provider value={handleInspectTask}>
-          <main
-            className={`App ${theme}`}
-            onKeyDown={(e) => {
-              if (e.key === "Escape") {
-                setIsAddNewTaskShown(false);
-                setIsAddNewBoardShown(false);
-              }
-              if (e.key === "ionBackButton") {
-                setIsAddNewBoardShown(false);
-                setIsAddNewColumnShown(false);
-                setIsAddNewTaskShown(false);
-                setIsEditBoardShown(false);
-                setIsDeleteBoardShown(false);
-                setIsMobileSelectBoardShown(false);
-                setIsInspectTaskShown(false);
-              }
-            }}
-            ref={ref}
-          >
+          <main className={`App ${theme}`} ref={ref}>
             {isSidebarOpen && (
               <Sidebar
                 // boards={state.data}

@@ -8,6 +8,7 @@ const Column = ({
   dotColor,
   tasks,
   isSpaceCliced = false,
+  isPopupOpen,
 }) => {
   return (
     <div className="column">
@@ -30,6 +31,7 @@ const Column = ({
               columnId={columnId}
               taskId={id}
               isSpaceCliced={isSpaceCliced}
+              isPopupOpen={isPopupOpen}
             />
           );
         })}
