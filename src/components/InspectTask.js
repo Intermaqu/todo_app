@@ -97,7 +97,7 @@ const InspectTask = ({
       >
         <div className="inspect-task-header">
           <p className={`headingL inspect-task-heading-${theme}`}>{taskName}</p>
-          <div
+          <button
             className="hamburger"
             onClick={() => {
               setIsTaskMenuShown(true);
@@ -133,7 +133,7 @@ const InspectTask = ({
                 </span>
               </div>
             )}
-          </div>
+          </button>
         </div>
         <p className={`bodyL inspect-task-description-${theme}`}>
           {description}
