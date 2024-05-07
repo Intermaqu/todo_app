@@ -23,7 +23,7 @@ const Task = ({
           columnId,
         });
       }}
-      tabIndex={isPopupOpen ? -1 : 0}
+      tabIndex={isPopupOpen ? null : 0}
       style={{
         userSelect: isSpaceCliced ? "none" : "auto",
       }}

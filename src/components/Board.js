@@ -6,13 +6,15 @@ import CustomButton from "./CustomButton";
 import eyeIcon from "../assets/images/icon-show-sidebar.svg";
 import { MOBILE_BREAKPOINT } from "../utils/constants";
 
+const TAB_INDEX = 1;
+
 const Board = ({
   columns,
   isSidebarOpen,
   setIsSidebarOpen,
   setIsAddNewColumnShown,
   isMobile,
-  popups,
+  isPopupOpen,
 }) => {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isSpaceClicked, setIsSpaceClicked] = useState(false);
@@ -21,7 +23,6 @@ const Board = ({
   const [scrollLeft, setScrollLeft] = useState(null);
   const [scrollTop, setScrollTop] = useState(null);
   const boardRef = useRef(null);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const theme = useContext(ThemeContext);
 
@@ -41,16 +42,6 @@ const Board = ({
     setIsMouseDown(false);
   };
 
-  const getIsPopupOpen = () => {
-    for (const key of Object.keys(popups)) {
-      if (popups[key]) {
-        setIsPopupOpen(true);
-        return;
-      }
-    }
-    setIsPopupOpen(false);
-  };
-
   const handleMouseMove = (e) => {
     if (!isMouseDown) return;
     if (!isSpaceClicked) return;
@@ -62,10 +53,6 @@ const Board = ({
     boardRef.current.scrollLeft = scrollLeft - walkX;
     boardRef.current.scrollTop = scrollTop - walkY;
   };
-
-  useEffect(() => {
-    getIsPopupOpen();
-  }, [popups]);
 
   useEffect(() => {
     const handleSpacePressed = (e) => {
@@ -130,6 +117,10 @@ const Board = ({
             <div
               className={`column board--add-column board--add-column-${theme}`}
               onClick={() => setIsAddNewColumnShown(true)}
+              tabIndex={isPopupOpen ? null : TAB_INDEX}
+              onKeyDown={(e) =>
+                e.key === "Enter" && setIsAddNewColumnShown(true)
+              }
             >
               <p className="headingXL">+ New Column</p>
             </div>
@@ -148,6 +139,10 @@ const Board = ({
               type="PrimaryL"
               width="175px"
               plus
+              disabled={isPopupOpen}
+              onKeyDown={(e) =>
+                e.key === "Enter" && setIsAddNewColumnShown(true)
+              }
             />
           </>
         )}
@@ -156,6 +151,8 @@ const Board = ({
         <div
           className="sidebar-toggle-button"
           onClick={() => setIsSidebarOpen(true)}
+          tabIndex={TAB_INDEX}
+          onKeyDown={(e) => e.key === "Enter" && setIsSidebarOpen(true)}
         >
           <img src={eyeIcon} alt="sidebar toggler" />
         </div>
