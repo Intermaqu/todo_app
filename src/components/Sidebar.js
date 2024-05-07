@@ -10,6 +10,8 @@ import ThemeContext from "../ThemeContext";
 
 import "../style/sidebar.css";
 
+const TAB_INDEX = 1;
+
 const Sidebar = ({
   boards,
   selectBoard,
@@ -17,8 +19,13 @@ const Sidebar = ({
   selectedId,
   toggleTheme,
   setIsAddNewBoardShown,
+  isPopupOpen,
 }) => {
   const theme = useContext(ThemeContext);
+
+  const isEnterPressed = (e) => {
+    return e.key === "Enter";
+  };
 
   return (
     <div className={`sidebar sidebar-${theme}`}>
@@ -41,6 +48,10 @@ const Sidebar = ({
               }`}
               key={id}
               onClick={() => selectBoard(id)}
+              onKeyDown={(e) => {
+                isEnterPressed(e) && selectBoard(id);
+              }}
+              tabIndex={isPopupOpen ? null : TAB_INDEX}
             >
               <img src={boardIcon} alt="board icon" />
               <p
@@ -56,6 +67,10 @@ const Sidebar = ({
         <div
           className="sidebar-boards--board sidebar-boards--add"
           onClick={() => setIsAddNewBoardShown(true)}
+          tabIndex={isPopupOpen ? null : TAB_INDEX}
+          onKeyDown={(e) => {
+            isEnterPressed(e) && setIsAddNewBoardShown(true);
+          }}
         >
           <img src={boardIcon} alt="board icon" />
           <p className="headingM">+Create New Board</p>
@@ -64,7 +79,14 @@ const Sidebar = ({
       {/* THEME TOGGLER */}
       <div className={`sidebar-toggle-theme sidebar-toggle-theme-${theme}`}>
         <img src={lightThemeIcon} alt="light theme" />
-        <div className="theme-switch" onClick={() => toggleTheme()}>
+        <div
+          className="theme-switch"
+          onClick={toggleTheme}
+          tabIndex={isPopupOpen ? null : TAB_INDEX}
+          onKeyDown={(e) => {
+            isEnterPressed(e) && toggleTheme();
+          }}
+        >
           <div
             className={`theme-switch--track ${
               theme === "light"
@@ -79,6 +101,10 @@ const Sidebar = ({
       <div
         className={`sidebar-hide sidebar-hide-${theme}`}
         onClick={hideSidebar}
+        tabIndex={isPopupOpen ? null : TAB_INDEX}
+        onKeyDown={(e) => {
+          isEnterPressed(e) && hideSidebar();
+        }}
       >
         <img src={hideSidebarIcon} alt="Hide sidebar icon" />
         <p className="headingM">Hide Sidebar</p>
