@@ -41,6 +41,8 @@ function App() {
   const [isMobileSelectBoardShown, setIsMobileSelectBoardShown] =
     useState(false);
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [inspectedTask, setInspectedTask] = useState(null);
 
@@ -363,6 +365,19 @@ function App() {
     return () => window.removeEventListener("resize", handleIsMobile);
   }, []);
 
+  useEffect(() => {
+    setIsPopupOpen(handleIsAnyModalOpen());
+  }, [
+    isAddNewTaskShown,
+    isAddNewBoardShown,
+    isAddNewColumnShown,
+    isEditTaskShown,
+    isEditBoardShown,
+    isDeleteBoardShown,
+    isDeleteTaskShown,
+    isInspectTaskShown,
+  ]);
+
   return (
     <ThemeContext.Provider value={theme}>
       {state ? (
@@ -379,6 +394,7 @@ function App() {
                 // isSidebarOpen={!isMobile && isSidebarOpen}
                 isSidebarOpen={false}
                 setIsAddNewBoardShown={setIsAddNewBoardShown}
+                isPopupOpen={isPopupOpen}
               />
             )}
             <div className="content">
@@ -414,6 +430,7 @@ function App() {
                   setIsDeleteBoardShown={setIsDeleteBoardShown}
                   isMobile={isMobile}
                   windowWidth={windowWidth}
+                  isPopupOpen={isPopupOpen}
                 />
               )}
               <Board
@@ -423,17 +440,7 @@ function App() {
                 addNewColumn={handleAddColumn}
                 setIsAddNewColumnShown={setIsAddNewColumnShown}
                 isMobile={isMobile}
-                popups={{
-                  isAddNewTaskShown,
-                  isEditTaskShown,
-                  isAddNewBoardShown,
-                  isInspectTaskShown,
-                  isAddNewColumnShown,
-                  isEditBoardShown,
-                  isDeleteBoardShown,
-                  isDeleteTaskShown,
-                  isMobileSelectBoardShown,
-                }}
+                isPopupOpen={isPopupOpen}
               />
             </div>
           </main>
