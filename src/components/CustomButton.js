@@ -9,6 +9,8 @@ const CustomButton = ({
   width = "100%",
   plus = false,
   customStyles = {},
+  tabIndex,
+  disabled,
 }) => {
   const theme = useContext(ThemeContext);
 
@@ -27,6 +29,8 @@ const CustomButton = ({
       onClick={onClick}
       className={themeStyle}
       style={{ width: width, ...customStyles }}
+      tabIndex={tabIndex}
+      disabled={disabled}
     >
       {plus ? `+ ${text}` : text}
     </button>
