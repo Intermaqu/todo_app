@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../style/header.css";
 import logoLight from "../assets/images/logo-light.svg";
 import logoDark from "../assets/images/logo-dark.svg";
 import ThemeContext from "../ThemeContext";
 import CustomButton from "./CustomButton";
 import { DESKTOP_BREAKPOINT } from "../utils/constants";
+
+const TAB_INDEX = 1;
 
 const Header = ({
   isSidebarOpen,
@@ -14,6 +16,7 @@ const Header = ({
   setIsEditBoardShown,
   setIsDeleteBoardShown,
   windowWidth,
+  isPopupOpen,
 }) => {
   const theme = useContext(ThemeContext);
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -23,6 +26,16 @@ const Header = ({
   const handleMenuClick = () => {
     setIsMenuShown(false);
   };
+
+  // useEffect(() => {
+  //   const handleHideAllModals = (e) => {
+  //     e.key === "Escape" && setIsMenuShown(false);
+  //   };
+  //   window.addEventListener("click", handleHideAllModals);
+  //   return () => {
+  //     window.removeEventListener("click", handleHideAllModals);
+  //   };
+  // }, []);
 
   return (
     <div
@@ -55,8 +68,15 @@ const Header = ({
             userSelect: "none",
           }}
           width={windowWidth < DESKTOP_BREAKPOINT ? "75px" : "165px"}
+          onKeyDown={(e) => e.key === "Enter" && addNewTask()}
+          // disabled={isPopupOpen}
         />
-        <button className="hamburger" onClick={() => setIsMenuShown(true)}>
+        <button
+          className="hamburger"
+          onClick={() => setIsMenuShown(true)}
+          onKeyDown={(e) => e.key === "Enter" && setIsMenuShown(true)}
+          // disabled={isPopupOpen}
+        >
           <div className="dot"></div>
           <div className="dot"></div>
           <div className="dot"></div>
