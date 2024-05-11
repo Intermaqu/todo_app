@@ -4,9 +4,7 @@ import ThemeContext from "../ThemeContext";
 import Column from "./Column";
 import CustomButton from "./CustomButton";
 import eyeIcon from "../assets/images/icon-show-sidebar.svg";
-import { MOBILE_BREAKPOINT } from "../utils/constants";
-
-const TAB_INDEX = 1;
+import { MENU_TAB_INDEX, NEW_COLUMN_TAB_INDEX } from "../utils/constants";
 
 const Board = ({
   columns,
@@ -117,7 +115,7 @@ const Board = ({
             <div
               className={`column board--add-column board--add-column-${theme}`}
               onClick={() => setIsAddNewColumnShown(true)}
-              tabIndex={isPopupOpen ? null : TAB_INDEX}
+              tabIndex={isPopupOpen ? null : NEW_COLUMN_TAB_INDEX}
               onKeyDown={(e) =>
                 e.key === "Enter" && setIsAddNewColumnShown(true)
               }
@@ -151,7 +149,7 @@ const Board = ({
         <div
           className="sidebar-toggle-button"
           onClick={() => setIsSidebarOpen(true)}
-          tabIndex={TAB_INDEX}
+          tabIndex={NEW_COLUMN_TAB_INDEX}
           onKeyDown={(e) => e.key === "Enter" && setIsSidebarOpen(true)}
         >
           <img src={eyeIcon} alt="sidebar toggler" />

@@ -4,9 +4,7 @@ import logoLight from "../assets/images/logo-light.svg";
 import logoDark from "../assets/images/logo-dark.svg";
 import ThemeContext from "../ThemeContext";
 import CustomButton from "./CustomButton";
-import { DESKTOP_BREAKPOINT } from "../utils/constants";
-
-const TAB_INDEX = 1;
+import { DESKTOP_BREAKPOINT, MENU_TAB_INDEX } from "../utils/constants";
 
 const Header = ({
   isSidebarOpen,
@@ -69,12 +67,14 @@ const Header = ({
           }}
           width={windowWidth < DESKTOP_BREAKPOINT ? "75px" : "165px"}
           onKeyDown={(e) => e.key === "Enter" && addNewTask()}
+          tabIndex={isPopupOpen ? "-1" : MENU_TAB_INDEX}
           // disabled={isPopupOpen}
         />
         <button
           className="hamburger"
           onClick={() => setIsMenuShown(true)}
           onKeyDown={(e) => e.key === "Enter" && setIsMenuShown(true)}
+          tabIndex={isPopupOpen ? "-1" : MENU_TAB_INDEX}
           // disabled={isPopupOpen}
         >
           <div className="dot"></div>

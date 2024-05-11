@@ -5,12 +5,11 @@ import boardIcon from "../assets/images/icon-board.svg";
 import lightThemeIcon from "../assets/images/icon-light-theme.svg";
 import darkThemeIcon from "../assets/images/icon-dark-theme.svg";
 import hideSidebarIcon from "../assets/images/icon-hide-sidebar.svg";
+import { MENU_TAB_INDEX } from "../utils/constants";
 
 import ThemeContext from "../ThemeContext";
 
 import "../style/sidebar.css";
-
-const TAB_INDEX = 1;
 
 const Sidebar = ({
   boards,
@@ -51,7 +50,7 @@ const Sidebar = ({
               onKeyDown={(e) => {
                 isEnterPressed(e) && selectBoard(id);
               }}
-              tabIndex={isPopupOpen ? null : TAB_INDEX}
+              tabIndex={isPopupOpen ? null : MENU_TAB_INDEX}
             >
               <img src={boardIcon} alt="board icon" />
               <p
@@ -67,7 +66,7 @@ const Sidebar = ({
         <div
           className="sidebar-boards--board sidebar-boards--add"
           onClick={() => setIsAddNewBoardShown(true)}
-          tabIndex={isPopupOpen ? null : TAB_INDEX}
+          tabIndex={isPopupOpen ? null : MENU_TAB_INDEX}
           onKeyDown={(e) => {
             isEnterPressed(e) && setIsAddNewBoardShown(true);
           }}
@@ -82,7 +81,7 @@ const Sidebar = ({
         <div
           className="theme-switch"
           onClick={toggleTheme}
-          tabIndex={isPopupOpen ? null : TAB_INDEX}
+          tabIndex={isPopupOpen ? null : MENU_TAB_INDEX}
           onKeyDown={(e) => {
             isEnterPressed(e) && toggleTheme();
           }}
@@ -101,7 +100,7 @@ const Sidebar = ({
       <div
         className={`sidebar-hide sidebar-hide-${theme}`}
         onClick={hideSidebar}
-        tabIndex={isPopupOpen ? null : TAB_INDEX}
+        tabIndex={isPopupOpen ? null : MENU_TAB_INDEX}
         onKeyDown={(e) => {
           isEnterPressed(e) && hideSidebar();
         }}

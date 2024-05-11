@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "../style/task.css";
 import ThemeContext from "../ThemeContext";
 import InspectTaskContext from "../InspectTaskContext";
+import { TASK_TAB_INDEX } from "../utils/constants";
 
 const Task = ({
   name,
@@ -23,7 +24,7 @@ const Task = ({
           columnId,
         });
       }}
-      tabIndex={isPopupOpen ? null : 0}
+      tabIndex={isPopupOpen ? null : TASK_TAB_INDEX}
       style={{
         userSelect: isSpaceCliced ? "none" : "auto",
       }}
