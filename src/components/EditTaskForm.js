@@ -103,6 +103,13 @@ const EditTaskForm = ({
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div
       className="overlay"
@@ -155,11 +162,15 @@ const EditTaskForm = ({
                   }}
                   isValid={!formValid.subtasks[id]}
                 />
-                <img
-                  src={iconCross}
-                  alt="icon cross"
+                <button
                   onClick={() => handleRemoveSubtask(id)}
-                />
+                  style={{
+                    background: "inherit",
+                    border: "none",
+                  }}
+                >
+                  <img src={iconCross} alt="icon cross" />
+                </button>
               </div>
             ))}
             <CustomButton
