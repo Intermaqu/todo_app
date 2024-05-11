@@ -67,6 +67,18 @@ const InspectTask = ({
     }
   };
 
+  const handleClickEditTask = (e) => {
+    e.stopPropagation();
+    setIsEditTaskShown(true);
+    setIsInspectTaskShown(false);
+  };
+
+  const handleClickDeleteTask = (e) => {
+    e.stopPropagation();
+    setIsDeleteTaskShown(true);
+    setIsInspectTaskShown(false);
+  };
+
   const handleCloseModal = (e) => {
     if (e.key === "Escape") {
       setIsInspectTaskShown(false);
@@ -99,42 +111,40 @@ const InspectTask = ({
           <p className={`headingL inspect-task-heading-${theme}`}>{taskName}</p>
           <button
             className="hamburger"
-            onClick={() => {
-              setIsTaskMenuShown(true);
+            onMouseDown={(e) => {
+              e.stopPropagation();
+              setIsTaskMenuShown(!isTaskMenuShown);
+            }}
+            onKeyDown={(e) => {
+              e.stopPropagation();
+              e.key === "Enter" && setIsTaskMenuShown(!isTaskMenuShown);
             }}
           >
             <div className="dot"></div>
             <div className="dot"></div>
             <div className="dot"></div>
-            {isTaskMenuShown && (
-              <div
-                className={`task-menu task-menu-${theme}`}
-                onMouseDown={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                <span
-                  className="task-menu-edit bodyL"
-                  onClick={() => {
-                    setIsEditTaskShown(true);
-                    setIsInspectTaskShown(false);
-                  }}
-                >
-                  Edit Task
-                </span>
-                <span
-                  className="task-menu-delete bodyL"
-                  onClick={() => {
-                    setIsDeleteTaskShown(true);
-                    setIsInspectTaskShown(false);
-                  }}
-                >
-                  Delete Task
-                </span>
-              </div>
-            )}
           </button>
         </div>
+        {isTaskMenuShown && (
+          <div className={`hamburger-menu hamburger-menu-${theme}`}>
+            <button
+              className="hamburger-menu-edit bodyL"
+              onMouseDown={handleClickEditTask}
+              onKeyDown={(e) => e.key === "Enter" && handleClickEditTask(e)}
+            >
+              Edit Task
+            </button>
+            <button
+              className="hamburger-menu-delete bodyL"
+              onMouseDown={handleClickDeleteTask}
+              onKeyDown={(e) => {
+                e.key === "Enter" && handleClickDeleteTask(e);
+              }}
+            >
+              Delete Task
+            </button>
+          </div>
+        )}
         <p className={`bodyL inspect-task-description-${theme}`}>
           {description}
         </p>
