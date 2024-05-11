@@ -17,12 +17,6 @@ const DeleteTask = ({
     : { maxWidth: "48%", width: "200px" };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleDeleteTask(task.id, columnId);
-      setIsDeleteTaskShown(false);
-      return;
-    }
-
     if (e.key === "Escape") {
       setIsDeleteTaskShown(false);
       return;
