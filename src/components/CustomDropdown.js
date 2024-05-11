@@ -4,17 +4,25 @@ import ThemeContext from "../ThemeContext";
 
 const CustomDropdown = ({ value, setValue, options, width = "100%" }) => {
   const theme = useContext(ThemeContext);
+  const [selectedValue, setSelectedValue] = useState({
+    id: value.columnId,
+    columnName: value.columnName,
+  });
 
-  const handleChange = (index) => {
-    setValue(options[index]);
+  const handleChange = (e) => {
+    setValue(options.find((option) => option.id === e.target.value));
+    setSelectedValue(options.find((option) => option.id === e.target.value));
   };
+
+  console.log("value:", value);
+  console.log("options:", options);
 
   return (
     <div className="custom-dropdown-wrapper" style={{ width: width }}>
       <select
-        value={value.id}
-        onChange={(e) => handleChange(e.target.selectedIndex)}
+        onChange={handleChange}
         className={`custom-dropdown-content custom-dropdown-content-${theme}`}
+        value={selectedValue.id}
       >
         {options.map((option) => (
           <option
