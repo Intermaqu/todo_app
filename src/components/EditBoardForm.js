@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
 import ThemeContext from "../ThemeContext";
 import CustomInput from "./CustomInput";
@@ -85,6 +85,19 @@ const EditBoardForm = ({ board, handleEditBoard, setIsEditBoardShown }) => {
       return;
     }
   };
+
+  const handleKeyboardClick = (e) => {
+    if (e.key === "Escape") {
+      setIsEditBoardShown(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyboardClick);
+    return () => {
+      document.removeEventListener("keydown", handleKeyboardClick);
+    };
+  }, []);
 
   return (
     <div className="overlay" onMouseDown={() => setIsEditBoardShown(false)}>
