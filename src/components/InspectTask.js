@@ -86,6 +86,14 @@ const InspectTask = ({
     }
   };
 
+  const handleCloseMenuModalEscape = (e) => {
+    if (e.key !== "Escape") return;
+
+    if (!isTaskMenuShown) handleCloseModal(e);
+
+    if (isTaskMenuShown) setIsTaskMenuShown(false);
+  };
+
   useEffect(() => {
     window.addEventListener("keydown", handleCloseModal);
     return () => {
@@ -118,6 +126,7 @@ const InspectTask = ({
             onKeyDown={(e) => {
               e.stopPropagation();
               e.key === "Enter" && setIsTaskMenuShown(!isTaskMenuShown);
+              handleCloseMenuModalEscape(e);
             }}
           >
             <div className="dot"></div>
