@@ -14,8 +14,8 @@ const CustomDropdown = ({ value, setValue, options, width = "100%" }) => {
     setSelectedValue(options.find((option) => option.id === e.target.value));
   };
 
-  console.log("value:", value);
-  console.log("options:", options);
+  // console.log("value:", value);
+  // console.log("options:", options);
 
   return (
     <div className="custom-dropdown-wrapper" style={{ width: width }}>
