@@ -40,11 +40,22 @@
 }
 
 .sidebar-boards {
-  display: flex;
-  flex-direction: column;
   width: calc(100% - 24px);
   margin-bottom: auto;
   user-select: none;
+  overflow-y: auto;
+  height: calc(100vh - 280px);
+  min-height: 0;
+  position: relative;
+}
+
+.sidebar-boards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-boards::-webkit-scrollbar-thumb {
+  background: var(--main-purple);
+  border-radius: 10px;
 }
 
 .sidebar-boards--board {

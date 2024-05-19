@@ -33,10 +33,10 @@ const Sidebar = ({
         <img alt="logo" src={theme === "light" ? logoDark : logoLight} />
       </div>
       {/* ALL BOARDS */}
+      <p className="sidebar-boards--title">
+        {`ALL BOARDS (${boards && boards.length})`}
+      </p>
       <div className="sidebar-boards">
-        <p className="sidebar-boards--title">
-          {`ALL BOARDS (${boards && boards.length})`}
-        </p>
         {boards &&
           boards.map(({ boardName, id }) => (
             <div
