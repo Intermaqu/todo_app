@@ -93,10 +93,6 @@ const EditTaskForm = ({
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleEditTaskValidate();
-      return;
-    }
     if (e.key === "Escape") {
       setIsEditTaskShown(false);
       return;
